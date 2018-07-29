@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && cross-env ENV=production webpack",
-    "dev": "cross-env ENV=development webpack-dev-server --open",
+    "build": "rimraf dist && cross-env ENV=production webpack --config config/webpack.config.js",
+    "dev": "cross-env ENV=development webpack-dev-server --config config/webpack.config.js --open",
     "precommit": "lint-staged"
   },
   "lint-staged": {

@@ -1,0 +1,16 @@
+
+{
+    "extends":"standard", // https://standardjs.com/
+    "parser": "babel-eslint",
+    "env": { // 根据环境初始化全局变量
+      "browser": true,
+      "mocha": true,
+      "node": true
+    },
+    "rules": { // 可覆盖 extends 中的规则
+      "valid-jsdoc": 2, // 强制写注释
+      "react/jsx-no-undef": 2, // 不能有未使用的变量
+      "react/jsx-wrap-multilines": 2, // jsx 多行时用()包裹
+      "react/no-string-refs": 1 // ref不能用string形式，要用回调形式
+    }
+  }

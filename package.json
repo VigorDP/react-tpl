@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && cross-env ENV=production webpack --config config/webpack.config.js",
-    "dev": "cross-env ENV=development webpack-dev-server --config config/webpack.config.js --open",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config config/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.js --open",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -21,6 +21,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
+    "qs": "^6.5.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",

@@ -1,5 +1,5 @@
 module.exports = {
-  mode: process.env.ENV,
+  mode: process.env.NODE_ENV,
   entry: require('./entry'),
   output: require('./output'),
   module: require('./module'),

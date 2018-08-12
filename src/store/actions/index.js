@@ -1,23 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from '../actionType'
-
-export const addTodo = text => {
-  return {
-    type: ADD_TODO,
-    id: nextTodoId++,
-    text
-  }
-}
-
-export const setVisibilityFilter = filter => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-}
-
-export const toggleTodo = id => {
-  return {
-    type: TOGGLE_TODO,
-    id
-  }
-}
+import { LOAD_JOKE, TOGGLE_TODO } from '../actionType'
+import { createAction } from 'redux-actions'
+// 语法：createAction(type, payloadCreator)
+export const loadJoke = createAction(LOAD_JOKE, data => data.result.data)

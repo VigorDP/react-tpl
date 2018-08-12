@@ -1,11 +1,16 @@
-import { createStore } from 'redux'
-import todoApp from 'store/reducers'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import rootReducer from 'store/reducers'
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const initialState = {
-  todos: [],
-  visibilityFilter: 'SHOW_ALL_aaa'
+  joke: []
 }
 
-let store = createStore(todoApp, initialState)
+let store = createStore(
+  rootReducer,
+  initialState,
+  composeEnhancers(applyMiddleware(thunk))
+)
 
 export default store

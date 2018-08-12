@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Text from 'containers/Text'
 import SVG from 'utils/svg'
 import styles from 'styles/App.scss'
-import { loadJokeList, getMobile } from 'api'
+import { loadJokeList } from 'api'
+
 class App extends Component {
   componentWillMount() {
-    loadJokeList()
+    this.props.loadJokeList()
   }
 
   render() {
@@ -16,7 +18,7 @@ class App extends Component {
           <h1 className={styles.AppTitle}>Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {this.props.joke[0] && this.props.joke[0].content}
         </p>
         <Text />
       </div>
@@ -24,4 +26,19 @@ class App extends Component {
   }
 }
 
-export default App
+function mapDispatchToProps(dispatch, props) {
+  return {
+    loadJokeList: () => dispatch(loadJokeList())
+  }
+}
+
+function mapStateToProps(state, props) {
+  return {
+    joke: state.joke
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

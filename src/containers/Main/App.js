@@ -3,11 +3,10 @@ import { connect } from 'react-redux'
 import Text from 'containers/Text'
 import SVG from 'utils/svg'
 import styles from 'styles/App.scss'
-import { getMobileAction } from 'store/actions'
 
 class App extends Component {
   componentWillMount() {
-    this.props.getMobileAction()
+    this.props.dispatch({ type: 'FETCH_REQUESTED' })
   }
 
   render() {
@@ -24,12 +23,6 @@ class App extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch, props) {
-  return {
-    getMobileAction: () => dispatch(getMobileAction())
-  }
-}
-
 function mapStateToProps(state, props) {
   return {
     joke: state.joke
@@ -38,5 +31,5 @@ function mapStateToProps(state, props) {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(App)

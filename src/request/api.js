@@ -1,5 +1,4 @@
 import { get, post } from './http.js'
-import { loadJoke } from 'store/actions'
 
 const loadJokeList = ({
   sort = 'asc',

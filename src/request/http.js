@@ -4,11 +4,11 @@
 import axios from 'axios'
 import QS from 'qs'
 import { Toast } from 'vant'
-import store from '../store/index'
-import { APIPrefix } from 'utils/contant'
+import store from 'store/index'
+import { HOST } from 'utils/env'
 
 // 环境的切换
-axios.defaults.baseURL = APIPrefix[process.env.NODE_ENV]
+axios.defaults.baseURL = HOST[process.env.NODE_ENV]
 
 // 请求超时时间
 axios.defaults.timeout = 10000

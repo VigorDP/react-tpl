@@ -11,6 +11,7 @@ module.exports = {
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
     vue$: 'vue/dist/vue.common.js',
     src: resolve('src'),
+    store: resolve('src/store'),
     assets: resolve('src/assets'),
     components: resolve('src/components'),
     containers: resolve('src/containers'),

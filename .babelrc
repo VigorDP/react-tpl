@@ -3,5 +3,5 @@
         "env",
         "react"
     ],
-    "plugins": ["transform-object-rest-spread"] // 转换 rest 和 spread operator
+    "plugins": [ "babel-plugin-transform-runtime","transform-object-rest-spread"] // 转换 rest 和 spread operator  runtime转异步函数
 }

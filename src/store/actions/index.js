@@ -1,4 +1,5 @@
-import { LOAD_JOKE, TOGGLE_TODO } from '../actionType'
+import { LOAD_JOKE, GET_MOBILE } from '../actionType'
+import { loadJokeList, getMobile } from 'api'
 import { createAction } from 'redux-actions'
 // 语法：createAction(type, payloadCreator)
-export const loadJoke = createAction(LOAD_JOKE, data => data.result.data)
+export const getMobileAction = createAction(GET_MOBILE, () => getMobile())

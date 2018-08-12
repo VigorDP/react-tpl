@@ -1,3 +1,4 @@
 const LOAD_JOKE = 'LOAD_JOKE'
+const GET_MOBILE = 'GET_MOBILE'
 
-export { LOAD_JOKE }
+export { LOAD_JOKE, GET_MOBILE }

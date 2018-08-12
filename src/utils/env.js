@@ -1,5 +1,5 @@
 const HOST = {
-  development: 'http://v.juhe.cn/',
+  development: 'http://localhost:8227/', //http://v.juhe.cn/
   test: 'http://v.juheTest.cn/',
   production: 'http://v.juheProd.cn/'
 }

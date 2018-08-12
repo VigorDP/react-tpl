@@ -13,4 +13,8 @@ ReactDOM.render(
 
 if (module.hot) {
   module.hot.accept()
+  // module.hot.accept('./store/reducers', () => {
+  //     const nextRootReducer = require('./store/reducers/index');
+  //     store.replaceReducer(nextRootReducer);
+  //   });
 }

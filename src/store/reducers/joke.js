@@ -1,12 +1,13 @@
-import { LOAD_JOKE } from '../actionType'
+import { GET_MOBILE } from '../actionType'
 import { handleActions } from 'redux-actions'
 // 语法：handleActions({actionCreator},initialState)
 
 export default handleActions(
   {
-    [LOAD_JOKE](state, action) {
-      return [...state, ...(action.payload || [])]
+    [GET_MOBILE](state, action) {
+      // action { payload:{mobile: "159263307"}, type:"GET_MOBILE" }
+      return action.payload.mobile
     }
   },
-  []
+  ''
 )

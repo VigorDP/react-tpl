@@ -13,6 +13,7 @@ module.exports = {
     src: resolve('src'),
     store: resolve('src/store'),
     assets: resolve('src/assets'),
+    api: resolve('src/request/api'),
     components: resolve('src/components'),
     containers: resolve('src/containers'),
     styles: resolve('src/styles'),

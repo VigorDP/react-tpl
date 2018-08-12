@@ -1,7 +1,14 @@
 const HOST = {
-  development: 'localhost:3000/',
-  test: 'apitest/',
-  production: 'api/'
+  development: 'http://v.juhe.cn/',
+  test: 'http://v.juheTest.cn/',
+  production: 'http://v.juheProd.cn/'
 }
 
-export { HOST }
+const ENV = 'development'
+// const ENV = 'test';
+// const ENV = 'production';
+
+module.exports = {
+  HOST,
+  ENV
+}

@@ -1,16 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
-import todoApp from './store/reducers'
 import { Provider } from 'react-redux'
 import App from 'containers/Main/App'
-
-const initialState = {
-  todos: [],
-  visibilityFilter: 'SHOW_ALL_aaa'
-}
-
-let store = createStore(todoApp, initialState)
+import store from 'store'
 
 ReactDOM.render(
   <Provider store={store}>

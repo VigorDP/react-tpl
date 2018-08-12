@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import Text from 'containers/Text'
 import SVG from 'utils/svg'
 import styles from 'styles/App.scss'
-
+import { loadJokeList, getMobile } from 'api'
 class App extends Component {
+  componentWillMount() {
+    loadJokeList()
+  }
+
   render() {
     return (
       <div className={styles.App}>

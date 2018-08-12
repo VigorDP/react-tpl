@@ -1,6 +1,6 @@
 const mock = {
   // 查询手机号
-  [`/`](req, res) {
+  [`/mobile`](req, res) {
     setTimeout(_ => {
       // mock loading
       res.status(200).json({

@@ -8,6 +8,8 @@
 - react-redux
 - react-router-redux
 - redux-thunk
+- redux-promise
+- redux-actions
 - immutable.js
 - webpack v4
 - css-modules

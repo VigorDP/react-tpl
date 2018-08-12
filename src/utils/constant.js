@@ -1,5 +1,5 @@
 const APIPrefix = {
-  development: 'localhost:8080/',
+  development: 'localhost:3000/',
   test: 'apitest/',
   production: 'api/'
 }

@@ -11,5 +11,6 @@ module.exports = [
     template: resolve('src/index.html'),
     filename: resolve('dist/index.html')
   }),
+  new webpack.HotModuleReplacementPlugin(),
   new ExtractTextPlugin('[name].[contenthash].css')
 ]

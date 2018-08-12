@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import todoApp from './store/reducers'
 import { Provider } from 'react-redux'
-import App from './container/Main/App'
+import App from 'containers/Main/App'
 
 const initialState = {
   todos: [],
@@ -18,3 +18,7 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
+
+if (module.hot) {
+  module.hot.accept()
+}

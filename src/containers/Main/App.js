@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Text from 'containers/Text'
 import SVG from 'utils/svg'
 import styles from 'styles/App.scss'
 import { loadJokeListAction } from 'store/actions'
@@ -20,7 +19,6 @@ class App extends Component {
         <p className="App-intro">
           {this.props.joke[0] && this.props.joke[0].content}
         </p>
-        <Text />
       </div>
     )
   }

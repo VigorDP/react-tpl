@@ -5,10 +5,10 @@ import axios from 'axios'
 import QS from 'qs'
 // import { Toast } from 'vant'
 import store from 'store'
-import { HOST, ENV } from 'utils/env'
+import { PROXYPATH } from './env'
 
 // 环境的切换
-axios.defaults.baseURL = HOST[ENV]
+axios.defaults.baseURL = PROXYPATH
 
 // 请求超时时间
 axios.defaults.timeout = 10000

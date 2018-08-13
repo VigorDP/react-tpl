@@ -15,7 +15,7 @@ const loadJokeList = ({
   })
 
 const getMobile = () => {
-  return get('/mobile')
+  return get('./mobile')
 }
 
 export { loadJokeList, getMobile }

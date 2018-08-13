@@ -8,7 +8,7 @@ import store from 'store'
 import { HOST, ENV } from 'utils/env'
 
 // 环境的切换
-axios.defaults.baseURL = HOST[ENV]
+// axios.defaults.baseURL = HOST[ENV]
 
 // 请求超时时间
 axios.defaults.timeout = 10000

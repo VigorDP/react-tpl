@@ -7,8 +7,12 @@ module.exports = {
   // contentBase: './src',
   hot: true,
   proxy: {
-    [proxyPath]: {
-      target: HOST[env],
+    // [proxyPath]: {
+    //   target: HOST[env],
+    //   changeOrigin: true
+    // }
+    '/mobile/*': {
+      target: 'http://localhost:8227/',
       changeOrigin: true
     }
   }

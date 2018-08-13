@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import Text from 'containers/Text'
 import SVG from 'utils/svg'
 import styles from 'styles/App.scss'
-import { getMobileAction } from 'store/actions'
+import { loadJokeListAction } from 'store/actions'
 
 class App extends Component {
   componentWillMount() {
-    this.props.getMobileAction()
+    this.props.loadJokeListAction()
   }
 
   render() {
@@ -17,7 +17,9 @@ class App extends Component {
           <img src={SVG.logo} className="App-logo" alt="logo" />
           <h1 className={styles.AppTitle}>Welcome to React</h1>
         </header>
-        <p className="App-intro">{this.props.joke}</p>
+        <p className="App-intro">
+          {this.props.joke[0] && this.props.joke[0].content}
+        </p>
         <Text />
       </div>
     )
@@ -26,7 +28,7 @@ class App extends Component {
 
 function mapDispatchToProps(dispatch, props) {
   return {
-    getMobileAction: () => dispatch(getMobileAction())
+    loadJokeListAction: () => dispatch(loadJokeListAction())
   }
 }
 

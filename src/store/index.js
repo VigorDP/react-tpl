@@ -1,11 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from 'store/reducers'
+import Immutable from 'immutable'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const initialState = {
-  joke: []
-}
+const initialState = Immutable.Map()
 
 let store = createStore(
   rootReducer,

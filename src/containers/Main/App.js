@@ -10,6 +10,8 @@ class App extends Component {
   }
 
   render() {
+    const content = this.props.joke.getIn([0, 'content']),
+      content2 = this.props.joke.get(0).get('content')
     return (
       <div className={styles.App}>
         <header className="App-header">
@@ -17,7 +19,8 @@ class App extends Component {
           <h1 className={styles.AppTitle}>Welcome to React</h1>
         </header>
         <p className="App-intro">
-          {this.props.joke[0] && this.props.joke[0].content}
+          {content}
+          {content2}
         </p>
       </div>
     )
@@ -32,7 +35,7 @@ function mapDispatchToProps(dispatch, props) {
 
 function mapStateToProps(state, props) {
   return {
-    joke: state.joke
+    joke: state.get('joke')
   }
 }
 

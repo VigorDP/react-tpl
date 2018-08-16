@@ -6,10 +6,15 @@ import { Provider } from 'react-redux'
 import App from 'containers/Main/App'
 import Text from 'containers/Text'
 import store from 'store'
+import Immutable from 'immutable'
 import createHashHistory from 'history/createHashHistory'
 
 let history = createHashHistory()
-syncHistoryWithStore(history, store)
+syncHistoryWithStore(history, store, {
+  selectLocationState(state) {
+    return state.get('routing')
+  }
+})
 
 ReactDOM.render(
   <Provider store={store}>

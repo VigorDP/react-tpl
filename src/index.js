@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import App from 'containers/Main/App';
 import Text from 'containers/Text';
 import store from 'store';
-import Immutable from 'immutable';
 import createHashHistory from 'history/createHashHistory';
 
 let history = createHashHistory();
@@ -20,10 +19,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path="/login" component={Text} />{' '}
-        <Route path="/" component={App} />{' '}
-      </Switch>{' '}
-    </Router>{' '}
+        <Route path="/login" component={Text} />
+        <Route path="/" component={App} />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

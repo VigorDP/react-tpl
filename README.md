@@ -16,7 +16,6 @@ npm run build
 - react-router v4
 - react-redux
 - react-router-redux
-- redux-thunk
 - redux-promise
 - redux-actions
 - immutable.js

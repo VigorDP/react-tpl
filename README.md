@@ -1,5 +1,14 @@
-# react-tpl
-> React 项目脚手架
+# 尚书工坊官网
+
+# 使用
+- 本地开发
+```
+npm run dev
+```
+- 打包上线
+```
+npm run build
+```
 
 # 技术栈
 - react v16

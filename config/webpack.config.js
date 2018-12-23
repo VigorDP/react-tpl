@@ -1,5 +1,6 @@
 module.exports = {
   mode: process.env.NODE_ENV,
+  devtool: 'source-map',
   entry: require('./entry'),
   output: require('./output'),
   module: require('./module'),
@@ -7,6 +8,4 @@ module.exports = {
   externals: require('./externals'),
   plugins: require('./plugins'),
   devServer: require('./devServer')
-}
-
-// console.log(module.exports)
+};

@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import { syncHistoryWithStore } from 'react-router-redux';
+// import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import App from 'containers/Main/App';
-import Text from 'containers/Text';
+import App from 'containers/App';
+import Login from 'containers/Login';
 import store from 'store';
 import createHashHistory from 'history/createHashHistory';
-
+import './styles/reset.scss';
 let history = createHashHistory();
-syncHistoryWithStore(history, store, {
-  selectLocationState(state) {
-    return state.get('routing');
-  }
-});
+// syncHistoryWithStore(history, store, {
+//   selectLocationState(state) {
+//     return state.get('routing');
+//   }
+// });
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path="/login" component={Text} />
-        <Route path="/" component={App} />
+        <Route path="/login" component={Login} exact={true} />
+        <Route path="/" component={App} exact={true} />
       </Switch>
     </Router>
   </Provider>,

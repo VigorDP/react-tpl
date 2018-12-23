@@ -1,7 +1,10 @@
-const resolve = require('path').resolve
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const webpack = require('webpack')
+const resolve = require('path').resolve;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = [
   new webpack.DefinePlugin({
@@ -12,5 +15,7 @@ module.exports = [
     filename: resolve('dist/index.html')
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new ExtractTextPlugin('[name].[contenthash].css')
-]
+  new ExtractTextPlugin('[name].[contenthash].css'),
+  new CompressionPlugin(),
+  () => process.env.NODE_ENV === 'production' && new BundleAnalyzerPlugin()
+];

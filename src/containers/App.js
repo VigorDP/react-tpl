@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -22,9 +22,9 @@ const centerMenu = [
 ];
 
 const rightMenu = [
-  { text: '明式家具之美' },
-  { text: '明式家具之美' },
-  { text: '明式家具之美' }
+  { url: Images.leftLogo },
+  { url: Images.leftLogo },
+  { url: Images.leftLogo }
 ];
 
 const footerConfig = [
@@ -95,6 +95,7 @@ export default class App extends Component {
             <Route path="/path3" component={Screen3} exact={true} />
             <Route path="/path4" component={Screen4} exact={true} />
             <Route path="/path5" component={Screen5} exact={true} />
+            <Redirect to="/" />
           </Switch>
         </div>
         <div className={styles.footer}>

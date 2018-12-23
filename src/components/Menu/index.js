@@ -2,6 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
 export default class Menu extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: ''
+    };
+  }
   render() {
     const { iconMenu, data } = this.props;
     return (
@@ -16,5 +22,5 @@ export default class Menu extends PureComponent {
 
 Menu.propTypes = {
   iconMenu: PropTypes.bool,
-  data: PropTypes.array.isRequired
+  data: PropTypes.array
 };

@@ -1,4 +1,4 @@
-const resolve = require('path').resolve
+const resolve = require('path').resolve;
 
 module.exports = {
   rules: [
@@ -8,10 +8,20 @@ module.exports = {
       include: [resolve('src'), resolve('test')],
       exclude: [resolve('node_modules')]
     },
+
     {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: [resolve('src')]
+      use: ['style-loader', 'css-loader']
+    },
+
+    {
+      test: /\.less$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        { loader: 'less-loader', options: { javascriptEnabled: true } }
+      ],
+      include: resolve(__dirname, '../node_modules')
     },
     {
       test: /\.scss$/,
@@ -42,4 +52,4 @@ module.exports = {
       ]
     }
   ]
-}
+};

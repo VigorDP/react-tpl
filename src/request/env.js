@@ -2,26 +2,26 @@ const HOST = {
   development: 'http://v.juhe.cn/',
   test: 'http://v.juheTest.cn/',
   production: 'http://v.juheProd.cn/'
-}
+};
 
-const ENV = 'development'
+const ENV = process.env.NODE_ENV;
 // const ENV = 'test';
 // const ENV = 'production';
 
-const PROXYPATH = getProxyPath(ENV)
+const PROXYPATH = getProxyPath(ENV);
 
 module.exports = {
   HOST,
   ENV,
   PROXYPATH
-}
+};
 
 function getProxyPath(env) {
-  let proxyPath = '/devApi'
+  let proxyPath = '/devApi';
   if (env === 'test') {
-    proxyPath = '/testApi'
+    proxyPath = '/testApi';
   } else if (env === 'production') {
-    proxyPath = '/prodApi'
+    proxyPath = '/prodApi';
   }
-  return proxyPath
+  return proxyPath;
 }

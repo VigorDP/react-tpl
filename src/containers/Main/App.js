@@ -44,7 +44,7 @@ class App extends Component {
 
     // const content2 = this.props.joke.get(0).get("content");
     console.log('render');
-    return <div className={styles.App}>1</div>;
+    return <div className={styles.App}>12</div>;
   }
 }
 

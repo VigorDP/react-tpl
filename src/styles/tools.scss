@@ -41,7 +41,9 @@ $a: 23;
   justify-content: space-around;
 }
 
-@mixin flex-y {
+@mixin flexy {
+  display: flex;
+  flex: 1;
   flex-direction: column;
 }
 

@@ -1,0 +1,16 @@
+@import 'styles/tools.scss';
+
+.headerContainer {
+  height: 100%;
+  background-color: green;
+  @include flex-sa;
+  .logoContainer {
+    background-color: rgb(180, 209, 180);
+    min-width: 100px;
+    height: 100%;
+    .logo {
+      width: 100px;
+      height: 100%;
+    }
+  }
+}

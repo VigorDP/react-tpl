@@ -1,6 +1,9 @@
 /*****************  变量定义区  ****************/
-$bg-color: red;
-$a: 23;
+$headerHeight: 100px;
+$footerHeight: 290px;
+$mainContentWidth: 1220px;
+$mainBg: #fff;
+$footerBg: #4a4a4a;
 
 /*****************  工具类定义区  ****************/
 @mixin clear {
@@ -101,46 +104,41 @@ $a: 23;
     background-size: $width $height;
   }
 }
-
-//定位上下左右居中
+// 定位上下左右居中
 @mixin center-xy {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-//定位上下居中
+// 定位上下居中
 @mixin center-y {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-//定位左右居中
+// 定位左右居中
 @mixin center-x {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
-//宽高
+// 宽高
 @mixin wh($width, $height) {
   width: $width;
   height: $height;
 }
-
-//字体大小、行高、字体
+// 字体大小、行高、字体
 @mixin font($size, $line-height, $family: 'Microsoft YaHei') {
   font: #{$size}/#{$line-height} $family;
 }
-
-//字体大小，颜色
+// 字体大小，颜色
 @mixin sc($size, $color) {
   font-size: $size;
   color: $color;
 }
-
 // 文本溢出省略显示
 @mixin text-elp($width) {
   white-space: nowrap;
@@ -148,7 +146,6 @@ $a: 23;
   text-overflow: ellipsis;
   width: $width;
 }
-
 // 多行文本溢出省略显示
 @mixin text-elp-multi($line) {
   overflow: hidden;

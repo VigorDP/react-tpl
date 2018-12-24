@@ -1,5 +1,5 @@
 {
-  "presets": ["env", "react"],
+  "presets": ["es2015", "stage-2", "react"], // preset 似乎不支持箭头函数，故暂时用es2015
   "plugins": [
     [
       "import",

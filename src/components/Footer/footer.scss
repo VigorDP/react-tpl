@@ -3,10 +3,10 @@
 .footer {
   width: 100%;
   padding: 0 100px;
-  height: 290px;
-  background: #4a4a4a;
+  height: $footerHeight;
+  background: $footerBg;
   .content {
-    width: 1220px;
+    width: $mainContentWidth;
     height: 100%;
     margin: 0 auto;
     @include flexy;

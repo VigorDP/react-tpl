@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Item from './Item';
+import Item from './MenuItem';
+import styles from './Menu.scss';
 export default class Menu extends PureComponent {
   constructor(props) {
     super(props);
@@ -9,11 +10,17 @@ export default class Menu extends PureComponent {
     };
   }
   render() {
-    const { iconMenu, data } = this.props;
+    const { data, selected, handleHeaderSelected } = this.props;
+    const isIconMenu = !!data[0].url;
     return (
-      <div>
+      <div
+        className={`${
+          isIconMenu ? styles.iconMenuContainer : styles.menuContainer
+        }`}
+        onClick={handleHeaderSelected}
+      >
         {data.map((item, index) => (
-          <Item data={item} key={index} iconMenu={iconMenu} />
+          <Item data={item} key={index} selected={selected} />
         ))}
       </div>
     );
@@ -21,6 +28,7 @@ export default class Menu extends PureComponent {
 }
 
 Menu.propTypes = {
-  iconMenu: PropTypes.bool,
-  data: PropTypes.array
+  data: PropTypes.array,
+  selected: PropTypes.string,
+  handleHeaderSelected: PropTypes.func
 };

@@ -16,15 +16,17 @@ import styles from 'styles/App.scss';
 import Images from 'utils/Image';
 
 const centerMenu = [
-  { text: '明式家具之美' },
-  { text: '明式家具之美' },
-  { text: '明式家具之美' }
+  { text: '明式家具之美', key: 'home', path: '/' },
+  { text: '家具', key: 'home1', path: '/path2' },
+  { text: '家居', key: 'home2', path: '/path3' },
+  { text: '服务', key: 'home3', path: '/path4' },
+  { text: '我们', key: 'home4', path: '/path5' }
 ];
 
 const rightMenu = [
-  { url: Images.leftLogo },
-  { url: Images.leftLogo },
-  { url: Images.leftLogo }
+  { url: Images.leftLogo, path: '/path2' },
+  { url: Images.leftLogo, path: '/path2' },
+  { url: Images.leftLogo, path: '/path2' }
 ];
 
 const footerConfig = [
@@ -78,6 +80,18 @@ const footerConfig = [
   }
 ];
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currenActive: 'home'
+    };
+  }
+  _handleHeaderSelected = event => {
+    const selected = event.target.getAttribute('data-key');
+    this.setState({
+      currenActive: selected
+    });
+  };
   render() {
     return (
       <div className={styles.App}>
@@ -86,6 +100,8 @@ export default class App extends Component {
             leftLogo={Images.leftLogo}
             centerMenu={centerMenu}
             rightMenu={rightMenu}
+            selected={this.state.currenActive}
+            handleHeaderSelected={this._handleHeaderSelected}
           />
         </div>
         <div className={styles.content}>

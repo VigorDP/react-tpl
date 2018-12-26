@@ -3,7 +3,7 @@
 .menuContainer {
   @include flex-sa;
   flex: 1;
-  background-color: rgb(255, 0, 21);
+  background-color: rgb(226, 41, 57);
 }
 .iconMenuContainer {
   @extend .menuContainer;

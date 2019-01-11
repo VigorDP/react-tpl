@@ -1,0 +1,238 @@
+stages:
+  - build
+  - dev
+  - release
+  - pre
+  - pro
+
+
+before_script:
+
+pre:
+  stage: pre
+  variables:
+    DPWHERE: "sdk"
+    TRACK: "pre"
+    K8NAMESPACE: "staging"
+    PREFIX: "sdk"
+    APPLABLE: "${CI_PROJECT_NAME}"
+    NAME: "${CI_PROJECT_NAME}"
+    CONFIGMAPPREFIX: "smpro-${CI_PROJECT_NAME}"
+    HOST: "shimo_im"
+    PORTN: "PORT"
+    PORTV: "9001"
+    REPNUM: "1"
+    REQMEM: "10Mi"
+    REQCPU: "0.02"
+    DPENV: "sdk-pre"
+    ROLE: "${CI_PROJECT_NAME}"
+    DOMAIN: "${CI_PROJECT_NAME}.shim.run"
+    INGRESSYML: "ingress.yml"
+    INGRESS: "0"
+    LOADBANCER: "0"
+    LOADBANCEROUT: "0"
+    LOADBANCERROLE: "$NODELABLE=$NODELABLEVALUE"
+    WHICHINGRESS: "nginx"
+    PRIINGRESS: "0"
+    SECRETNAME: "shimoruntls"
+    INGPATH: "/"
+    PDOMAIN: "${CI_PROJECT_NAME}.shimo.run" #此deployment对内的域名
+    PINGPATH: "/" #内部ingress location
+    PWHICHINGRESS: "nginx-internal" #使用哪个内部ingress controler
+    PNAME: "${PREFIX}-${CI_PROJECT_NAME}-pri" #deployment 内部ingress 里的名字
+    EGG_SERVER_ENV: "shimopro"
+  image: registry-vpc.cn-beijing.aliyuncs.com/shimopro/deploy:deploy-image
+  script:
+    - deploy
+  retry: 2
+  only:
+    - release
+  tags:
+    - k8runner
+  environment: deploy_pre
+
+pro:
+  stage: pro
+  variables:
+    DPWHERE: "sdk"
+    TRACK: "pro"
+    K8NAMESPACE: "default"
+    PREFIX: "smpro"
+    APPLABLE: "${CI_PROJECT_NAME}"
+    NAME: "${CI_PROJECT_NAME}"
+    HOST: "shimo_im"
+    CONFIGMAPPREFIX: "${PREFIX}-${CI_PROJECT_NAME}"
+    PORTN: "PORT"
+    PORTV: "80"
+    REPNUM: "4"
+    REQMEM: "10Mi"
+    REQCPU: "0.2"
+    LIMMEM: "2048Mi"
+    LIMCPU: "1"
+    DPENV: "pro"
+    ROLE: "${CI_PROJECT_NAME}"
+    DOMAIN: "${CI_PROJECT_NAME}.shimo.im"
+    INGRESS: "0"
+    LOADBANCER: "0"
+    LOADBANCEROUT: "0"
+    LOADBANCERROLE: "$NODELABLE=$NODELABLEVALUE"
+    WHICHINGRESS: "nginx"
+    PRIINGRESS: "0"
+    SECRETNAME: "shimoimtls"
+    CHECKPATH: "/"
+    INGPATH: "/"
+    PDOMAIN: "${CI_PROJECT_NAME}.shimo.run" #此deployment对内的域名
+    PINGPATH: "/" #内部ingress location
+    PWHICHINGRESS: "nginx-internal" #使用哪个内部ingress controler
+    PNAME: "${PREFIX}-${CI_PROJECT_NAME}-pri" #deployment 内部ingress 里的名字
+    EGG_SERVER_ENV: "shimopro"
+  image: registry-vpc.cn-beijing.aliyuncs.com/shimopro/deploy:deploy-image
+  script:
+    - deploy
+  retry: 2
+  only:
+    - release
+  tags:
+    - k8runner
+  when: manual
+  environment: deploy_pro
+
+
+release:
+  stage: release
+  variables:
+    DPWHERE: "dev"
+    TRACK: "release"
+    K8NAMESPACE: "release"
+    PREFIX: "smrt"
+    APPLABLE: "${CI_PROJECT_NAME}"
+    HOST: "shimodev_com"
+    NAME: "${CI_PROJECT_NAME}"
+    CONFIGMAPPREFIX: "${PREFIX}-${CI_PROJECT_NAME}"
+    PORTN: "PORT"
+    PORTV: "80"
+    REPNUM: "1"
+    REQMEM: "10Mi"
+    REQCPU: "0.2"
+    LIMMEM: "2048Mi"
+    LIMCPU: "1"
+    DPENV: "rt"
+    ROLE: "${CI_PROJECT_NAME}"
+    DOMAIN: "${CI_PROJECT_NAME}-release.shimodev.com"
+    INGRESS: "0"
+    LOADBANCER: "0"
+    LOADBANCEROUT: "0"
+    LOADBANCERROLE: "$NODELABLE=$NODELABLEVALUE"
+    WHICHINGRESS: "nginx"
+    PRIINGRESS: "0"
+    SECRETNAME: "shimodevtls"
+    CHECKPATH: "/"
+    INGPATH: "/"
+    PDOMAIN: "${CI_PROJECT_NAME}.shimo.run" #此deployment对内的域名
+    PINGPATH: "/" #内部ingress location
+    PWHICHINGRESS: "nginx" #使用哪个内部ingress controler
+    PNAME: "${PREFIX}-${CI_PROJECT_NAME}-pri" #deployment 内部ingress 里的名字
+    EGG_SERVER_ENV: "shimodev"
+  image: registry-vpc.cn-beijing.aliyuncs.com/shimopro/deploy:deploy-image
+  script:
+    - deploy
+  retry: 2
+  only:
+    - release
+  tags:
+    - k8runner
+  environment: deploy_release
+
+dev:
+  stage: dev
+  variables:
+    DPWHERE: "dev"   #表示部署到哪个集群(dev:devk8s all:所有线上k8s集群 pro:除了prok8s1的线上集群 pro1:prok8s1)
+    TRACK: "develop"  #表示部署的版本类型 如 stable release gate(灰度版本)
+    K8NAMESPACE: "default" #部署到的命名空间，其中新集群会都部署到default(主要是为了和istio分流方式兼容),prok8s1 仍然是对应不同的空间，保持兼容。
+    APPLABLE: "${CI_PROJECT_NAME}" #service 需要选择deployment使用
+    HOST: "shimodev_com" #node 的dev 环境变量
+    PREFIX: "smdev" #自定义,这个段的前缀
+    NAME: "${CI_PROJECT_NAME}" #deployment ingress 里的名字
+    CONFIGMAPPREFIX: "${PREFIX}-${CI_PROJECT_NAME}" #去configmap 相关配置用到
+    PORTN: "PORT" #对外的端口名字，有些项目不同
+    PORTV: "80" #对外的端口号
+    REPNUM: "1"   #部署的副本数
+    REQMEM: "10Mi"  #需要的内存资源
+    REQCPU: "0.2" #需要的cpu资源
+    LIMMEM: "2048Mi" #限制的内存资源
+    LIMCPU: "1" #限制的cpu 资源
+    DPENV: "dev" #自定义的表识变量
+    ROLE: "${CI_PROJECT_NAME}" #node项目使用的变量
+    DOMAIN: "latform.shimodev.com" #此deployment对外的域名
+    INGRESS: "1" #表示是否创建ingress 资源，1为创建
+    LOADBANCER: "0" #表示是否创建 关联阿里内网slb类型的service 1为创建
+    LOADBANCEROUT: "0" #表示是否创建 关联阿里外网slb类型的service 1为创建
+    LOADBANCERROLE: "$NODELABLE=$NODELABLEVALUE" #创建slb sevice时挂载特定标签的ndoe作为后端
+    WHICHINGRESS: "nginx" #使用哪个ingress controler
+    PRIINGRESS: "0" # 是否创建内部ingress 资源，内部系统使用
+    SECRETNAME: "shimodevtls" #ingress 使用的证书
+    CHECKPATH: "/" #健康检查的路径
+    INGPATH: "/" #ingress location 的路径
+    PDOMAIN: "${CI_PROJECT_NAME}.shimo.run" #此deployment对内的域名
+    PINGPATH: "/" #内部ingress location
+    PWHICHINGRESS: "nginx" #使用哪个内部ingress controler
+    PNAME: "${PREFIX}-${CI_PROJECT_NAME}-pri" #deployment 内部ingress 里的名字
+    EGG_SERVER_ENV: "shimodev"
+  image: registry-vpc.cn-beijing.aliyuncs.com/shimopro/deploy:deploy-image  # 使用的部署镜像
+  script:
+    - deploy #使用的部署脚本，在上面的镜像里
+  retry: 2  #重试次数
+  only:
+    - dev #只有develop 分支才触发
+  tags:
+    - k8runner #选择使用k8s  runner
+  environment: deploy_dev  #环境标签
+
+
+
+build:
+  stage: build
+  services:
+    - name: registry-vpc.cn-beijing.aliyuncs.com/shimopro/docker:dind #提供docker daemon 通过variables:DOCKER
+  image: registry-vpc.cn-beijing.aliyuncs.com/shimopro/docker:dind
+  script:
+    - export SM_PROJECT_NAME=`echo "${CI_PROJECT_NAME}" | sed s/'-'/''/g | sed s/'_'/''/g`
+    - export SM_PROJECT_NAME=`echo "${SM_PROJECT_NAME}" | tr '[:upper:]' '[:lower:]'`
+    - export DIDI_IMAGE="$PUBREG/didi/$SM_PROJECT_NAME"
+
+    - docker pull $CONTAINER_IMAGE:$CI_COMMIT_REF_SLUG || true
+    - docker build --cache-from $CONTAINER_IMAGE:$CI_COMMIT_REF_SLUG
+      --build-arg branch=$CI_COMMIT_REF_SLUG
+      -t $CONTAINER_IMAGE:$CI_COMMIT_REF_SLUG
+      -t $CONTAINER_IMAGE:$CI_PIPELINE_ID
+      -f Dockerfile .
+    - docker push $CONTAINER_IMAGE:$CI_COMMIT_REF_SLUG
+    - docker push $CONTAINER_IMAGE:$CI_PIPELINE_ID
+
+  retry: 2
+  tags:
+    - k8runner
+  only:
+   - dev
+   - release
+  environment: build_image
+
+variables:
+  NODELABLE: "beta.kubernetes.io/os"
+  NODELABLEVALUE: "linux"
+  LIMMEM: "2048Mi"
+  LIMCPU: "1"
+  MIRCTYPE: "common"
+  DPROOT: "./scripts/dp"
+  ALIREG: "registry-internal.cn-beijing.aliyuncs.com"
+  VPCALIREG: "registry-vpc.cn-beijing.aliyuncs.com"
+  PUBREG: "registry.shimo.im"
+  NPMREG: "http://registry.npm.shimo.run"
+  NPM_CONFIG_LOGLEVEL: "error"
+  ENV: shimodev
+  GIT_SUBMODULE_STRATEGY: recursive
+  CONTAINER_IMAGE: $VPCALIREG/$ENV/$CI_PROJECT_NAME
+  IMAGE: "$VPCALIREG/$ENV/$CI_PROJECT_NAME:$CI_PIPELINE_ID"
+  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_DRIVER: overlay2
+  NODE_ENV: production

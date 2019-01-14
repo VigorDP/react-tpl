@@ -13,7 +13,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/login" component={LoginLayout} />
         <Route path="/app" component={AppLayout} />
-        <Redirect to="/login" />
+        <Redirect to="/app" />
       </Switch>
     </HashRouter>
   </Provider>,

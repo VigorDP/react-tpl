@@ -1,0 +1,15 @@
+.toastContainer{
+  position: absolute;
+  top:54px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 154px;
+  height: 42px;
+  line-height: 42px;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  font-size: 13px;
+  color: #41464b;
+  text-align: center;
+}

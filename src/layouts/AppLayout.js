@@ -4,12 +4,12 @@ import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import BasicInfoPage from 'pages/BasicInfoPage';
 import ConfigInfoPage from 'pages/ConfigInfoPage';
 
-import styles from 'styles/App.scss';
+import styles from 'styles/app.scss';
 import leftLogo from 'assets/imgs/logo.png';
 
 export default class App extends Component {
   render() {
-    const { match } = this.props;
+    const { match, history } = this.props;
     return (
       <div className={styles.appContainer}>
         <div className={styles.headerContainer}>
@@ -18,14 +18,32 @@ export default class App extends Component {
             <span>SDK企业后台</span>
           </div>
           <div className={styles.right}>
-            <span>退出登录</span>
+            <NavLink to="/login">退出登录</NavLink>
           </div>
         </div>
 
         <div className={styles.contentContainer}>
           <div className={styles.leftMenu}>
-            <NavLink to={`${match.path}/ent-info`}>企业信息</NavLink>
-            <NavLink to={`${match.path}/ent-conf`}>企业配置</NavLink>
+            <NavLink
+              to={`${match.path}/ent-info`}
+              className={`${
+                history.location.pathname === '/app/ent-info'
+                  ? styles.active
+                  : ''
+              }`}
+            >
+              企业信息
+            </NavLink>
+            <NavLink
+              to={`${match.path}/ent-conf`}
+              className={`${
+                history.location.pathname === '/app/ent-conf'
+                  ? styles.active
+                  : ''
+              }`}
+            >
+              企业配置
+            </NavLink>
           </div>
 
           <div className={styles.rightContent}>

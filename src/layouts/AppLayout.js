@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
-
 import BasicInfoPage from 'pages/BasicInfoPage';
 import ConfigInfoPage from 'pages/ConfigInfoPage';
 
 import styles from 'styles/app.scss';
 import leftLogo from 'assets/imgs/logo.png';
+import getUrlByType from 'utils/getRedirectUrl';
 
 export default class App extends Component {
   render() {
@@ -18,7 +18,7 @@ export default class App extends Component {
             <span>SDK企业后台</span>
           </div>
           <div className={styles.right}>
-            <NavLink to="/login">退出登录</NavLink>
+            <a href={getUrlByType('login')}>退出登录</a>
           </div>
         </div>
 

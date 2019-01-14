@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import Table from 'components/Table';
 import styles from 'styles/basicInfoPage.scss';
+import getUrlByType from 'utils/getRedirectUrl';
 
 const tableTestConfig = {
   title: '测试环境',
@@ -51,7 +51,9 @@ export default class Home extends PureComponent {
       <div className={styles.container}>
         <Table config={tableTestConfig} />
         <div className={styles.goToDemo}>
-          <a className={styles.button}>去体验 Demo</a>
+          <a className={styles.button} href={getUrlByType('demo')}>
+            去体验 Demo
+          </a>
           <span className={styles.tip}>
             请使用企业ID和Secret在测试环境注册账号
           </span>

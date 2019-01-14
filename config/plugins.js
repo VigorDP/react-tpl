@@ -1,6 +1,7 @@
 const resolve = require('path').resolve
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = [
@@ -12,5 +13,6 @@ module.exports = [
     filename: resolve('dist/index.html')
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new ExtractTextPlugin('[name].[contenthash].css')
+  new ExtractTextPlugin('[name].[contenthash].css'),
+  new CopyWebpackPlugin([{ context: 'src/assets', from: '**/*',to:'assets'}])
 ]

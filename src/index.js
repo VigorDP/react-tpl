@@ -4,6 +4,9 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import AppLayout from 'layouts/AppLayout';
 import LoginLayout from 'layouts/LoginLayout';
+import RegisterLayout from 'layouts/RegisterLayout';
+import UpdateEnterpriseLayout from 'layouts/UpdateEnterpriseLayout';
+
 import store from 'store';
 import './styles/reset.scss';
 
@@ -12,8 +15,11 @@ ReactDOM.render(
     <HashRouter>
       <Switch>
         <Route path="/login" component={LoginLayout} />
+        <Route path="/register" component={RegisterLayout} />
+        <Route path="/updateEnterprise" component={UpdateEnterpriseLayout} />
+
         <Route path="/app" component={AppLayout} />
-        <Redirect to="/app" />
+        <Redirect to="/login" />
       </Switch>
     </HashRouter>
   </Provider>,

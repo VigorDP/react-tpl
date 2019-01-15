@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import styles from 'styles/loginLayout.scss';
 
-class LoginLayout extends Component {
+class UpdateEnterpriseLayout extends Component {
   render() {
     return (
       <div className={styles.loginContainer}>
         <div className={styles.contentContainer}>
-          <div className={styles.title}>登录SDK企业账户</div>
+          <div className={styles.title}>完善企业账户信息</div>
 
           <div className={styles.commonLine}>
             <div className={styles.commonInput}>
               <input
+                name="Url"
                 type="text"
-                placeholder="手机号"
+                placeholder="企业名称"
                 autoFocus
-                className={styles.mobile}
+                className={styles.companyName}
               />
             </div>
             <span
-              className={`${styles.mobileError}
+              className={`${styles.companyNameError}
                 ${styles.errorTip}
                `}
             />
@@ -28,13 +28,31 @@ class LoginLayout extends Component {
           <div className={styles.commonLine}>
             <div className={styles.commonInput}>
               <input
+                name="Url"
                 type="text"
-                placeholder="密码"
-                className={styles.password}
+                placeholder="企业联系人姓名"
+                className={styles.companyOwner}
               />
             </div>
             <span
-              className={`${styles.passwordError}
+              className={`${styles.companyOwnerError}
+                ${styles.errorTip}
+               `}
+            />
+          </div>
+
+          <div className={styles.commonLine}>
+            <div className={styles.commonInput}>
+              <input
+                name="Url"
+                type="text"
+                placeholder="企业所在行业(选填)"
+                className={styles.companyField}
+              />
+            </div>
+            <span className="errorTip" />
+            <span
+              className={`
                 ${styles.errorTip}
                `}
             />
@@ -44,19 +62,11 @@ class LoginLayout extends Component {
             <button
               className={`${styles.commonButton}
                 ${styles.accountButton}
-                ${styles.loginButton}
+                ${styles.finishButton}
                ${styles.forbiddenButton}`}
             >
-              立即登录
+              完成
             </button>
-          </div>
-
-          <div className={styles.commonLine}>
-            <div className={styles.loginEntry}>
-              没有账号？请<NavLink to="/register" className={styles.ahref}>
-                注册
-              </NavLink>
-            </div>
           </div>
         </div>
       </div>
@@ -64,4 +74,4 @@ class LoginLayout extends Component {
   }
 }
 
-export default LoginLayout;
+export default UpdateEnterpriseLayout;

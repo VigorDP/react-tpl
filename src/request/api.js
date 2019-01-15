@@ -1,5 +1,4 @@
-import { get, post } from './http.js'
-import { loadJoke } from 'store/actions'
+import { get, post } from './http';
 
 const loadJokeList = ({
   sort = 'asc',
@@ -13,10 +12,10 @@ const loadJokeList = ({
     pagesize,
     time,
     key: '9c818748074635227d7b2060c2450c5d'
-  })
+  });
 
 const getMobile = () => {
-  return get('/mobile')
-}
+  return get('/mobile');
+};
 
-export { loadJokeList, getMobile }
+export { loadJokeList, getMobile };

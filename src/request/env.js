@@ -1,11 +1,11 @@
 const HOST = {
-  development: 'http://v.juhe.cn/',
-  test: 'http://v.juheTest.cn/',
+  development: 'http://localhost:8227/',
+  test: 'https://platform.shimodev.com/',
   production: 'http://v.juheProd.cn/'
 };
 
-const ENV = process.env.NODE_ENV;
-// const ENV = 'test';
+// const ENV = process.env.NODE_ENV;
+const ENV = 'test';
 // const ENV = 'production';
 
 const PROXYPATH = getProxyPath(ENV);

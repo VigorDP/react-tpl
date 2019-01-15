@@ -1,1 +1,1 @@
-module.exports = Object.assign({}, require('./userApi.js'))
+module.exports = Object.assign({}, require('./userApi.js'));

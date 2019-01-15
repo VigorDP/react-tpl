@@ -3,6 +3,7 @@
   flex-direction: column;
   height:100%;
   width: 100%;
+  min-width: 1280px;
   background-color: linear-gradient(67deg, #2c3033, rgba(65, 70, 75, 0.8));
   background-image:url('../assets/imgs/headerBg@2x.png');
   background-size: cover;
@@ -34,6 +35,15 @@
 .commonLine{
   display: flex;
   flex-direction: column;
+  margin-bottom: 14px;
+  &.errorTip{
+    width: 400px;
+    margin-bottom: 0;
+    color:white;
+    font-size: 12px;
+    text-align: left;
+    height: 12px;
+  }
 }
 
 .commonInput {
@@ -61,12 +71,6 @@
   flex: 1;
   margin-left:6px;
   font-size: 16px;
-}
-
-.errorTip{
-  color:white;
-  font-size: 12px;
-  margin-top: 10px;
 }
 
 .invalid~.errorTip {
@@ -106,7 +110,7 @@
 
 .accountButton{
   width: 400px;
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 

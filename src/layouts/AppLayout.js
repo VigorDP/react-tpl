@@ -5,7 +5,6 @@ import ConfigInfoPage from 'pages/ConfigInfoPage';
 
 import styles from 'styles/app.scss';
 import leftLogo from 'assets/imgs/logo.png';
-import getUrlByType from 'utils/getRedirectUrl';
 
 export default class App extends Component {
   render() {
@@ -18,7 +17,7 @@ export default class App extends Component {
             <span>SDK企业后台</span>
           </div>
           <div className={styles.right}>
-            <a href={getUrlByType('login')}>退出登录</a>
+            <NavLink to="/login">退出登录</NavLink>
           </div>
         </div>
 

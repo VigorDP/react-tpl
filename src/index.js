@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import AppLayout from 'layouts/AppLayout';
 import LoginLayout from 'layouts/LoginLayout';
 import RegisterLayout from 'layouts/RegisterLayout';
-import UpdateEnterpriseLayout from 'layouts/UpdateEnterpriseLayout';
+import UpdateUserInfoLayout from 'layouts/UpdateUserInfoLayout';
 
 import store from 'store';
 import './styles/reset.scss';
@@ -16,8 +16,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/login" component={LoginLayout} />
         <Route path="/register" component={RegisterLayout} />
-        <Route path="/updateEnterprise" component={UpdateEnterpriseLayout} />
-
+        <Route path="/updateUserInfo" component={UpdateUserInfoLayout} />
         <Route path="/app" component={AppLayout} />
         <Redirect to="/login" />
       </Switch>

@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux-immutable'
-import { routerReducer } from 'react-router-redux'
+import { combineReducers } from 'redux-immutable';
 
-import joke from './joke'
+import token from './token';
+import user from './user';
 
 const rootReducer = combineReducers({
-  joke,
-  routing: routerReducer
-})
+  token,
+  user
+});
 
-export default rootReducer
+export default rootReducer;

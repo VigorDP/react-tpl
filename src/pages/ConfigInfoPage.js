@@ -2,54 +2,40 @@ import React, { PureComponent } from 'react';
 import Table from 'components/Table';
 import styles from 'styles/basicInfoPage.scss';
 import getUrlByType from 'utils/getRedirectUrl';
+import { connect } from 'react-redux';
+import { registerAction } from 'store/actions';
+import PropTypes from 'prop-types';
 
-const tableTestConfig = {
-  title: '测试环境',
-  content: [
-    {
-      key: '企业 ID',
-      value: '初心科技',
-      canEditable: false
-    },
-    {
-      key: '企业 Secret',
-      value: '初心科技',
-      canEditable: false
-    },
-    {
-      key: '有效期至',
-      value: '初心科技',
-      canEditable: false
-    }
-  ]
-};
-
-const tableConfig = {
-  title: '生产环境',
-  content: [
-    {
-      key: '企业 ID',
-      value: '初心科技',
-      canEditable: false
-    },
-    {
-      key: '企业 Secret',
-      value: '初心科技',
-      canEditable: false
-    },
-    {
-      key: '有效期至',
-      value: '初心科技',
-      canEditable: false
-    }
-  ]
-};
-
-export default class Home extends PureComponent {
+class ConfigInfoPage extends PureComponent {
+  getTableConfig(config) {
+    const { ID, secret, expireTime } = config;
+    const tableTestConfig = {
+      title: '测试环境',
+      content: [
+        {
+          key: '企业 ID',
+          value: ID,
+          canEditable: false
+        },
+        {
+          key: '企业 Secret',
+          value: secret,
+          canEditable: false
+        },
+        {
+          key: '有效期至',
+          value: expireTime,
+          canEditable: false
+        }
+      ]
+    };
+    return { testConfig: tableTestConfig, prodConfig: {} };
+  }
   render() {
+    const { testConfig } = this.getTableConfig(this.props.config);
     return (
       <div className={styles.container}>
-        <Table config={tableTestConfig} />
+        <Table config={testConfig} />
         <div className={styles.goToDemo}>
           <a className={styles.button} href={getUrlByType('demo')}>
             去体验 Demo
@@ -58,10 +44,29 @@ export default class Home extends PureComponent {
             请使用企业ID和Secret在测试环境注册账号
           </span>
         </div>
-        <Table config={tableConfig} />
+        {/* <Table config={prodConfig} /> */}
       </div>
     );
   }
 }
 
-Home.propTypes = {};
+ConfigInfoPage.propTypes = {
+  config: PropTypes.object
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    config: state.getIn(['user', 'config'])
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    register: params => dispatch(registerAction(params))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConfigInfoPage);

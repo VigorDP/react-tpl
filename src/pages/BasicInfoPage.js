@@ -3,46 +3,12 @@ import Table from 'components/Table';
 import Toast from 'components/Toast';
 import PromptDialog from 'components/PromptDialog';
 import styles from 'styles/basicInfoPage.scss';
-
-const tableConfig = {
-  title: '企业信息',
-  content: [
-    {
-      key: '企业名称',
-      value: '初心科技',
-      canEditable: true
-    },
-    {
-      key: '企业联系人名称',
-      value: '初心科技',
-      canEditable: true
-    },
-    {
-      key: '企业联系人电话',
-      value: '初心科技',
-      canEditable: true
-    },
-    {
-      key: '企业所在行业',
-      value: '初心科技',
-      canEditable: true
-    },
-    {
-      key: '注册时间',
-      value: '初心科技',
-      canEditable: false
-    },
-    {
-      key: '最后登录时间',
-      value: '初心科技',
-      canEditable: false
-    }
-  ]
-};
+import { connect } from 'react-redux';
+import { registerAction } from 'store/actions';
+import PropTypes from 'prop-types';
 
 const toastMessage = '企业信息修改成功';
-
-export default class Home extends PureComponent {
+class BasicInfoPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,6 +21,8 @@ export default class Home extends PureComponent {
     this.updateEnterpriseInfo = this.updateEnterpriseInfo.bind(this);
     this.toggleToast = this.toggleToast.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {}
 
   showPromptDialog(key, value) {
     this.setState({
@@ -84,10 +52,53 @@ export default class Home extends PureComponent {
     });
   }
 
+  getTableConfig(config) {
+    const { mobile, name, industry, contact, createdAt, lastSignInAt } = config;
+    const tableConfig = {
+      title: '企业信息',
+      content: [
+        {
+          key: '企业名称',
+          value: name,
+          canEditable: true
+        },
+        {
+          key: '企业联系人名称',
+          value: contact,
+          canEditable: true
+        },
+        {
+          key: '企业联系人电话',
+          value: mobile,
+          canEditable: false
+        },
+        {
+          key: '企业所在行业',
+          value: industry,
+          canEditable: true
+        },
+        {
+          key: '注册时间',
+          value: createdAt,
+          canEditable: false
+        },
+        {
+          key: '最后登录时间',
+          value: lastSignInAt,
+          canEditable: false
+        }
+      ]
+    };
+    return tableConfig;
+  }
+
   render() {
     return (
       <div className={styles.container}>
-        <Table config={tableConfig} showPromptDialog={this.showPromptDialog} />
+        <Table
+          config={this.getTableConfig(this.props)}
+          showPromptDialog={this.showPromptDialog}
+        />
         {this.state.canShowPrompt && (
           <PromptDialog
             config={this.state.promptConfig}
@@ -104,4 +115,36 @@ export default class Home extends PureComponent {
   }
 }
 
-Home.propTypes = {};
+BasicInfoPage.propTypes = {
+  register: PropTypes.func,
+  mobile: PropTypes.string,
+  name: PropTypes.string,
+  contact: PropTypes.string,
+  industry: PropTypes.string,
+  createdAt: PropTypes.string,
+  lastSignInAt: PropTypes.string,
+  config: PropTypes.object
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    mobile: state.getIn(['user', 'mobile']),
+    name: state.getIn(['user', 'name']),
+    contact: state.getIn(['user', 'contact']),
+    industry: state.getIn(['user', 'industry']),
+    createdAt: state.getIn(['user', 'createdAt']),
+    lastSignInAt: state.getIn(['user', 'lastSignInAt']),
+    config: state.getIn(['user', 'config'])
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    register: params => dispatch(registerAction(params))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BasicInfoPage);

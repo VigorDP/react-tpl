@@ -46,9 +46,10 @@ pre:
     - deploy
   retry: 2
   only:
-    - release
+    - sdk-release
   tags:
     - k8runner
+  when: manual
   environment: deploy_pre
 
 pro:
@@ -91,7 +92,7 @@ pro:
     - deploy
   retry: 2
   only:
-    - release
+    - sdk-release
   tags:
     - k8runner
   when: manual
@@ -138,7 +139,7 @@ release:
     - deploy
   retry: 2
   only:
-    - release
+    - sdk-release
   tags:
     - k8runner
   environment: deploy_release
@@ -183,7 +184,7 @@ dev:
     - deploy #使用的部署脚本，在上面的镜像里
   retry: 2  #重试次数
   only:
-    - dev #只有develop 分支才触发
+    - sdk #只有develop 分支才触发
   tags:
     - k8runner #选择使用k8s  runner
   environment: deploy_dev  #环境标签
@@ -213,8 +214,8 @@ build:
   tags:
     - k8runner
   only:
-   - dev
-   - release
+   - sdk
+   - sdk-release
   environment: build_image
 
 variables:

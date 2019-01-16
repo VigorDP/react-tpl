@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { registerAction } from 'store/actions';
 import { sendCode } from 'api';
 import PropTypes from 'prop-types';
+import logo from 'assets/imgs/logo.png';
 
 const SECONDS = 10;
 
@@ -41,26 +42,80 @@ class RegisterLayout extends Component {
   }
 
   handleMobile(e) {
+    const value = e.target.value.trim();
     this.setState({
-      mobile: e.target.value.trim()
+      mobile: value
     });
+    this.checkMobile(value, true);
+  }
+
+  checkMobile(mobile, hasLimit) {
+    const result = validateMobile(mobile);
+    if (hasLimit) {
+      mobile.length >= 11 && this.showErrorText(result);
+    } else {
+      this.showErrorText(result);
+    }
+    return result[0];
   }
 
   handleVerifyCode(e) {
+    const value = e.target.value.trim();
     this.setState({
-      verifyCode: e.target.value.trim()
+      verifyCode: value
     });
+    this.checkVerifyCode(value, true);
+  }
+
+  checkVerifyCode(code, hasLimit) {
+    const result = validateVerifyCode(code);
+    if (hasLimit) {
+      code.length >= 4 && this.showErrorText(result);
+    } else {
+      this.showErrorText(result);
+    }
+    return result[0];
   }
 
   handlePassword(e) {
+    const value = e.target.value.trim();
     this.setState({
-      password: e.target.value.trim()
+      password: value
     });
+    this.checkPassword(value, true);
+  }
+
+  checkPassword(password, hasLimit) {
+    const result = validatePassword(password);
+    if (hasLimit) {
+      password.length >= 6 && this.showErrorText(result);
+    } else {
+      this.showErrorText(result);
+    }
+    return result[0];
   }
 
   handleRepeatPassword(e) {
+    const value = e.target.value.trim();
     this.setState({
-      repeatPassword: e.target.value.trim()
+      repeatPassword: value
+    });
+    this.checkRepeatPassword(this.state.password, value, true);
+  }
+
+  checkRepeatPassword(oldValue, newValue, hasLimit) {
+    const result = validateRepeatPassword(oldValue, newValue);
+    if (hasLimit) {
+      newValue.length >= 6 && this.showErrorText(result);
+    } else {
+      this.showErrorText(result);
+    }
+    return result[0];
+  }
+
+  showErrorText(result) {
+    this.setState({
+      errorText: result[1]
     });
   }
 
@@ -94,16 +149,9 @@ class RegisterLayout extends Component {
       return;
     }
 
-    const mobileResult = validateMobile(mobile);
-    if (!mobileResult[0]) {
-      this.setState({
-        errorText: mobileResult[1]
-      });
+    const result = this.checkMobile(mobile);
+    if (!result) {
       return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
     }
 
     this.setState({
@@ -135,56 +183,24 @@ class RegisterLayout extends Component {
   // 表单验证
   checkForm() {
     const { mobile, password, verifyCode, repeatPassword } = this.state;
-
-    const mobileResult = validateMobile(mobile);
-    if (!mobileResult[0]) {
-      this.setState({
-        errorText: mobileResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const mobileResult = this.checkMobile(mobile);
+    if (!mobileResult) {
+      return false;
     }
-
-    const verifyCodeResult = validateVerifyCode(verifyCode);
-    if (!verifyCodeResult[0]) {
-      this.setState({
-        errorText: verifyCodeResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const verifyCodeResult = this.checkVerifyCode(verifyCode);
+    if (!verifyCodeResult) {
+      return false;
     }
-
-    const passwordResult = validatePassword(password);
-    if (!passwordResult[0]) {
-      this.setState({
-        errorText: passwordResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const passwordResult = this.checkPassword(password);
+    if (!passwordResult) {
+      return false;
     }
-
-    const repeatPasswordResult = validateRepeatPassword(
+    const repeatPasswordResult = this.checkRepeatPassword(
       password,
       repeatPassword
     );
-    if (!repeatPasswordResult[0]) {
-      this.setState({
-        errorText: repeatPasswordResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    if (!repeatPasswordResult) {
+      return false;
     }
     return true;
   }
@@ -201,6 +217,9 @@ class RegisterLayout extends Component {
     } = this.state;
     return (
       <div className={styles.loginContainer}>
+        <div className={styles.headerContainer}>
+          <img src={logo} alt="石墨文档" />
+        </div>
         <div className={styles.contentContainer}>
           <div className={styles.title}>注册SDK企业账户</div>
 

@@ -5,6 +5,7 @@ import { validateMobile, validatePassword } from 'utils/checkForm';
 import { connect } from 'react-redux';
 import { loginAction } from 'store/actions';
 import PropTypes from 'prop-types';
+import logo from 'assets/imgs/logo.png';
 
 class LoginLayout extends Component {
   constructor(props) {
@@ -21,17 +22,48 @@ class LoginLayout extends Component {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleMobile(e) {
+  showErrorText(result) {
     this.setState({
-      mobile: e.target.value.trim()
+      errorText: result[1]
     });
   }
 
-  handlePassword(e) {
+  handleMobile(e) {
+    const value = e.target.value.trim();
     this.setState({
-      password: e.target.value.trim()
+      mobile: value
     });
+    this.checkMobile(value, true);
   }
+
+  checkMobile(mobile, hasLimit) {
+    const result = validateMobile(mobile);
+    if (hasLimit) {
+      mobile.length >= 11 && this.showErrorText(result);
+    } else {
+      this.showErrorText(result);
+    }
+    return result[0];
+  }
+
+  handlePassword(e) {
+    const value = e.target.value.trim();
+    this.setState({
+      password: value
+    });
+    this.checkPassword(value, true);
+  }
+
+  checkPassword(password, hasLimit) {
+    const result = validatePassword(password);
+    if (hasLimit) {
+      password.length >= 6 && this.showErrorText(result);
+    } else {
+      this.showErrorText(result);
+    }
+    return result[0];
+  }
+
   handleLogin() {
     const { login } = this.props;
     const { mobile, password } = this.state;
@@ -57,37 +89,25 @@ class LoginLayout extends Component {
 
   checkForm() {
     const { mobile, password } = this.state;
-
-    const mobileResult = validateMobile(mobile);
-    if (!mobileResult[0]) {
-      this.setState({
-        errorText: mobileResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const mobileResult = this.checkMobile(mobile);
+    if (!mobileResult) {
+      return false;
     }
-
-    const passwordResult = validatePassword(password);
-    if (!passwordResult[0]) {
-      this.setState({
-        errorText: passwordResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const passwordResult = this.checkPassword(password);
+    if (!passwordResult) {
+      return false;
     }
-
     return true;
   }
+
   render() {
     const { mobile, password, errorText, logining } = this.state;
+    console.log('err', errorText);
     return (
       <div className={styles.loginContainer}>
+        <div className={styles.headerContainer}>
+          <img src={logo} alt="石墨文档" />
+        </div>
         <div className={styles.contentContainer}>
           <div className={styles.title}>登录SDK企业账户</div>
 

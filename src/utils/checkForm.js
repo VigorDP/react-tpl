@@ -5,7 +5,7 @@ function validateMobile(mobile) {
   if (!/^1[3-9]\d{9}$/.test(mobile.trim())) {
     return [false, '手机号格式不正确，请重新输入'];
   }
-  return [true];
+  return [true, ''];
 }
 
 function validateEmail(email) {
@@ -19,7 +19,7 @@ function validateEmail(email) {
   if (!reg.test(email.trim())) {
     return [false, '邮箱格式不正确，请重新输入'];
   }
-  return [true];
+  return [true, ''];
 }
 
 function validatePassword(password) {
@@ -32,20 +32,22 @@ function validatePassword(password) {
   } else if (!validPasswdPattern.test(password)) {
     return [false, '密码包含不支持的特殊符号，请检查并重新输入'];
   }
-  return [true];
+  return [true, ''];
 }
 
 function validateRepeatPassword(old, repeat) {
   if (old !== repeat) {
     return [false, '两次密码不一致，请重新输入'];
   }
-  return [true];
+  return [true, ''];
 }
 
 function validateVerifyCode(verifyCode) {
   var reg = /\d{4}/;
   if (!verifyCode) {
     return [false, '请输入验证码'];
+  } else if (verifyCode.length > 4) {
+    return [false, '验证码长度应为 4 位'];
   } else if (verifyCode.match(reg)) {
     return [true, ''];
   } else {
@@ -57,7 +59,7 @@ function validateEmpty(text, type) {
   if (!text) {
     return [false, `${type}不能为空`];
   }
-  return [true];
+  return [true, ''];
 }
 
 export {

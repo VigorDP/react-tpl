@@ -17,9 +17,13 @@
   justify-content: center;
 }
 
-.login{
+.headerContainer{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-left: 46px;
   img{
-    height: 28px;
+    height: 30px;
   }
 }
 

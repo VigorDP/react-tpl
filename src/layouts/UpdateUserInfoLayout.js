@@ -23,27 +23,60 @@ class UpdateUserInfoLayout extends Component {
     this.handleFinish = this.handleFinish.bind(this);
   }
 
-  handleCompanyName(e) {
+  showErrorText(result) {
     this.setState({
-      companyName: e.target.value.trim()
+      errorText: result[1]
     });
+  }
+
+  checkCompanyInfo(value, type) {
+    const result = validateEmpty(value, type);
+    this.showErrorText(result);
+    if (result[0]) {
+      return true;
+    }
+  }
+
+  handleCompanyName(e) {
+    const value = e.target.value.trim();
+    this.setState({
+      companyName: value
+    });
+    this.checkCompanyInfo(value, '企业名称');
   }
 
   handleCompanyOwner(e) {
+    const value = e.target.value.trim();
     this.setState({
-      companyOwner: e.target.value.trim()
+      companyOwner: value
     });
+    this.checkCompanyInfo(value, '企业联系人信息');
   }
 
   handleCompanyEmail(e) {
+    const value = e.target.value.trim();
     this.setState({
-      companyEmail: e.target.value.trim()
+      companyEmail: value
     });
+    this.checkCompanyEmail(value, true);
+  }
+
+  checkCompanyEmail(value, hasLimit) {
+    const result = validateEmail(value);
+    if (hasLimit) {
+      value.indexOf('@') !== -1 &&
+        value.indexOf('.') !== -1 &&
+        this.showErrorText(result);
+    } else {
+      this.showErrorText(result);
+    }
+    return result[0];
   }
 
   handleCompanyField(e) {
+    const value = e.target.value.trim();
     this.setState({
-      companyField: e.target.value.trim()
+      companyField: value
     });
   }
 
@@ -81,40 +114,20 @@ class UpdateUserInfoLayout extends Component {
   checkForm() {
     const { companyName, companyOwner, companyEmail } = this.state;
 
-    const nameResult = validateEmpty(companyName, '企业名称');
-    if (!nameResult[0]) {
-      this.setState({
-        errorText: nameResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const nameResult = this.checkCompanyInfo(companyName, '企业名称');
+
+    if (!nameResult) {
+      return false;
     }
 
-    const ownerResult = validateEmpty(companyOwner, '企业联系人姓名');
-    if (!ownerResult[0]) {
-      this.setState({
-        errorText: ownerResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const ownerResult = this.checkCompanyInfo(companyOwner, '企业联系人姓名');
+    if (!ownerResult) {
+      return false;
     }
 
-    const emailResult = validateEmail(companyEmail);
-    if (!emailResult[0]) {
-      this.setState({
-        errorText: emailResult[1]
-      });
-      return;
-    } else {
-      this.setState({
-        errorText: ''
-      });
+    const emailResult = this.checkCompanyEmail(companyEmail);
+    if (!emailResult) {
+      return false;
     }
 
     return true;

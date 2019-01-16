@@ -41,7 +41,6 @@ axios.interceptors.response.use(
   },
   // 服务器状态码不是200的情况
   error => {
-    console.log('response error', error);
     const status = error && error.status;
     if (status) {
       switch (status) {
@@ -63,7 +62,8 @@ axios.interceptors.response.use(
           break;
       }
     } else {
-      alert('未知错误');
+      // alert('未知错误');
+      return Promise.reject(error);
     }
   }
 );

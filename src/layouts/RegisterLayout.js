@@ -140,7 +140,12 @@ class RegisterLayout extends Component {
       .then(() => {
         history.push('/updateUserInfo');
       })
-      .catch()
+      .catch(err => {
+        console.log('register error', err);
+        this.setState({
+          errorText: '注册失败'
+        });
+      })
       .finally(() => {
         this.setState({
           registering: false
@@ -186,7 +191,12 @@ class RegisterLayout extends Component {
     // TODO: sendVerifyCode
     sendCode({ mobile })
       .then(res => {})
-      .catch();
+      .catch(err => {
+        console.log('sendCode error', err);
+        this.setState({
+          errorText: '发送验证码失败'
+        });
+      });
   }
 
   // 表单验证

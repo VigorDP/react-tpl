@@ -170,7 +170,7 @@ LoginLayout.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    mobile: state.getIn(['userInfo', 'user', 'mobile'])
+    mobile: state.getIn(['userInfo', 'user']).mobile
   };
 };
 

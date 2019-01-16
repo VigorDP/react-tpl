@@ -3,7 +3,7 @@ import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import BasicInfoPage from 'pages/BasicInfoPage';
 import ConfigInfoPage from 'pages/ConfigInfoPage';
 
-import styles from '../styles/app.scss';
+import styles from 'styles/app.scss';
 import leftLogo from 'assets/imgs/logo.png';
 
 export default class App extends Component {

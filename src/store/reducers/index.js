@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux-immutable';
 
-import token from './token';
-import user from './user';
+import userInfo from './userInfo';
 
 const rootReducer = combineReducers({
-  token,
-  user
+  userInfo
 });
 
 export default rootReducer;

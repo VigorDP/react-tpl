@@ -32,7 +32,7 @@ class ConfigInfoPage extends PureComponent {
     return { testConfig: tableTestConfig, prodConfig: {} };
   }
   render() {
-    const { testConfig } = this.getTableConfig(this.props.config);
+    const { testConfig } = this.getTableConfig(this.props.configs[0]);
     return (
       <div className={styles.container}>
         <Table config={testConfig} />
@@ -51,12 +51,13 @@ class ConfigInfoPage extends PureComponent {
 }
 
 ConfigInfoPage.propTypes = {
-  config: PropTypes.object
+  configs: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    config: state.getIn(['user', 'config'])
+    // 这里 user 是普通对象
+    configs: state.getIn(['userInfo', 'user']).configs
   };
 };
 

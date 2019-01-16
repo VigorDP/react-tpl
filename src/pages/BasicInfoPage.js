@@ -123,18 +123,18 @@ BasicInfoPage.propTypes = {
   industry: PropTypes.string,
   createdAt: PropTypes.string,
   lastSignInAt: PropTypes.string,
-  config: PropTypes.object
+  configs: PropTypes.array
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    mobile: state.getIn(['user', 'mobile']),
-    name: state.getIn(['user', 'name']),
-    contact: state.getIn(['user', 'contact']),
-    industry: state.getIn(['user', 'industry']),
-    createdAt: state.getIn(['user', 'createdAt']),
-    lastSignInAt: state.getIn(['user', 'lastSignInAt']),
-    config: state.getIn(['user', 'config'])
+    mobile: state.getIn(['userInfo', 'user']).mobile,
+    name: state.getIn(['userInfo', 'user']).name,
+    contact: state.getIn(['userInfo', 'user']).contact,
+    industry: state.getIn(['userInfo', 'user']).industry,
+    createdAt: state.getIn(['userInfo', 'user']).createdAt,
+    lastSignInAt: state.getIn(['userInfo', 'user']).lastSignInAt,
+    configs: state.getIn(['userInfo', 'user']).configs
   };
 };
 

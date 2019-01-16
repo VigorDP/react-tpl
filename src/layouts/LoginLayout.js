@@ -102,7 +102,6 @@ class LoginLayout extends Component {
 
   render() {
     const { mobile, password, errorText, logining } = this.state;
-    console.log('err', errorText);
     return (
       <div className={styles.loginContainer}>
         <div className={styles.headerContainer}>
@@ -171,7 +170,7 @@ LoginLayout.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    mobile: state.getIn(['user', 'mobile'])
+    mobile: state.getIn(['userInfo', 'user', 'mobile'])
   };
 };
 

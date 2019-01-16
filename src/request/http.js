@@ -21,7 +21,7 @@ axios.interceptors.request.use(
   config => {
     // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
     // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
-    const token = store.getState().getIn(['token', 'token']);
+    const token = store.getState().getIn(['userInfo', 'token']);
     token && (config.headers.Authorization = `Bearer ${token}`);
     return config;
   },
@@ -31,16 +31,40 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
   response => {
-    if (response.status === 200) {
+    // 会执行两次
+    if (response && (response.status === 200 || response.status === 201)) {
       return Promise.resolve(response);
     } else {
+      console.log('axios response', response);
       return Promise.reject(response);
     }
   },
   // 服务器状态码不是200的情况
   error => {
-    window.localStorage.clear('token');
-    window.location.hash = '#/login';
+    console.log('response error', error);
+    const status = error && error.status;
+    if (status) {
+      switch (status) {
+        // 400
+        case 400:
+          alert(error.message);
+          break;
+        // 401 未登录
+        case 401:
+        // 403 token 过期
+        case 403:
+          window.localStorage.clear('token');
+          window.location.hash = '#/login';
+          break;
+        // 404 请求不存在
+        case 404:
+        default:
+          alert(error.status);
+          break;
+      }
+    } else {
+      alert('未知错误');
+    }
   }
 );
 /**
@@ -59,10 +83,10 @@ export function get(url, params, config) {
         config
       )
       .then(res => {
-        resolve(res.data);
+        resolve(res && res.data);
       })
       .catch(err => {
-        reject(err.data);
+        reject(err);
       });
   });
 }
@@ -76,10 +100,10 @@ export function post(url, params, config) {
     axios
       .post(url, params, config)
       .then(res => {
-        resolve(res.data);
+        resolve(res && res.data);
       })
       .catch(err => {
-        reject(err.data);
+        reject(err);
       });
   });
 }
@@ -94,10 +118,10 @@ export function patch(url, params) {
     axios
       .patch(url, QS.stringify(params))
       .then(res => {
-        resolve(res.data);
+        resolve(res && res.data);
       })
       .catch(err => {
-        reject(err.data);
+        reject(err);
       });
   });
 }

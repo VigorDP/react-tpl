@@ -13,13 +13,13 @@ import { sendCode } from 'api';
 import PropTypes from 'prop-types';
 import logo from 'assets/imgs/logo.png';
 
-const SECONDS = 10;
+const SECONDS = 60;
 
 class RegisterLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: '15926339107',
+      mobile: '13260615728',
       verifyCode: '2222',
       password: '111111',
       repeatPassword: '111111',
@@ -27,6 +27,7 @@ class RegisterLayout extends Component {
       initSeconds: SECONDS, // 验证码倒计时
       errorText: ''
     };
+    this._mounted = false; // 挂载标志
     this.handleMobile = this.handleMobile.bind(this);
     this.handleVerifyCode = this.handleVerifyCode.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -36,7 +37,12 @@ class RegisterLayout extends Component {
     this.handleRegister = this.handleRegister.bind(this);
   }
 
+  componentDidMount() {
+    this._mounted = true;
+  }
+
   componentWillUnmount() {
+    this._mounted = false;
     clearInterval(this.timeInterval);
     this.timeInterval = null;
   }
@@ -159,6 +165,9 @@ class RegisterLayout extends Component {
     });
 
     this.timeInterval = setInterval(() => {
+      if (!this._mounted) {
+        return;
+      }
       const { initSeconds } = this.state;
       if (initSeconds > 0) {
         this.setState({
@@ -322,7 +331,7 @@ RegisterLayout.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    mobile: state.getIn(['user', 'mobile'])
+    mobile: state.getIn(['userInfo', 'user']).mobile
   };
 };
 

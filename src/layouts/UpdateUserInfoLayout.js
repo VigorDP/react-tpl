@@ -9,9 +9,9 @@ class UpdateUserInfoLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      companyName: '',
-      companyOwner: '',
-      companyEmail: '',
+      companyName: '1',
+      companyOwner: '1',
+      companyEmail: '1@1.com',
       errorText: ''
     };
     this.handleCompanyName = this.handleCompanyName.bind(this);
@@ -105,6 +105,7 @@ class UpdateUserInfoLayout extends Component {
         history.push('/app');
       })
       .catch(err => {
+        console.log('UpdateUserInfo Error', err);
         this.setState({
           errorText: '发生异常'
         });
@@ -222,13 +223,13 @@ UpdateUserInfoLayout.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    mobile: state.getIn(['user', 'mobile']),
-    name: state.getIn(['user', 'name']),
-    contact: state.getIn(['user', 'contact']),
-    industry: state.getIn(['user', 'industry']),
-    createdAt: state.getIn(['user', 'createdAt']),
-    lastSignInAt: state.getIn(['user', 'lastSignInAt']),
-    config: state.getIn(['user', 'config'])
+    mobile: state.getIn(['userInfo', 'user', 'mobile']),
+    name: state.getIn(['userInfo', 'user', 'name']),
+    contact: state.getIn(['userInfo', 'user', 'contact']),
+    industry: state.getIn(['userInfo', 'user', 'industry']),
+    createdAt: state.getIn(['userInfo', 'user', 'createdAt']),
+    lastSignInAt: state.getIn(['userInfo', 'user', 'lastSignInAt']),
+    config: state.getIn(['userInfo', 'user', 'config'])
   };
 };
 

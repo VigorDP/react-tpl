@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && NODE_ENV=production webpack --config config/webpack.config.js",
+    "build": "rimraf dist && NODE_ENV=production && webpack --config config/webpack.config.js",
     "dev": "nodemon --watch config --exec \"cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.js --open \"",
     "test": "nodemon --watch config --exec \"cross-env NODE_ENV=test webpack-dev-server --config config/webpack.config.js --open \"",
     "precommit": "lint-staged"

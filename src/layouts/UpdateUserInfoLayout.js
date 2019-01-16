@@ -4,14 +4,15 @@ import { validateEmpty, validateEmail } from 'utils/checkForm';
 import { connect } from 'react-redux';
 import { updateUserInfoAction } from 'store/actions';
 import PropTypes from 'prop-types';
+import logo from 'assets/imgs/logo.png';
 
 class UpdateUserInfoLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      companyName: '1',
-      companyOwner: '1',
-      companyEmail: '1@1.com',
+      companyName: '',
+      companyOwner: '',
+      companyEmail: '',
       errorText: ''
     };
     this.handleCompanyName = this.handleCompanyName.bind(this);
@@ -105,9 +106,8 @@ class UpdateUserInfoLayout extends Component {
         history.push('/app');
       })
       .catch(err => {
-        console.log('UpdateUserInfo Error', err);
         this.setState({
-          errorText: '发生异常'
+          errorText: '未知错误'
         });
       });
   }
@@ -144,6 +144,9 @@ class UpdateUserInfoLayout extends Component {
     } = this.state;
     return (
       <div className={styles.loginContainer}>
+        <div className={styles.headerContainer}>
+          <img src={logo} alt="石墨文档" />
+        </div>
         <div className={styles.contentContainer}>
           <div className={styles.title}>完善企业账户信息</div>
 

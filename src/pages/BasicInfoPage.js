@@ -4,7 +4,7 @@ import Toast from 'components/Toast';
 import PromptDialog from 'components/PromptDialog';
 import styles from 'styles/basicInfoPage.scss';
 import { connect } from 'react-redux';
-import { registerAction } from 'store/actions';
+import { updateUserInfoAction, getUserInfoAction } from 'store/actions';
 import PropTypes from 'prop-types';
 
 const toastMessage = '企业信息修改成功';
@@ -14,7 +14,7 @@ class BasicInfoPage extends PureComponent {
     this.state = {
       canShowPrompt: false,
       canShowToast: false,
-      promptConfig: { title: '', content: '' }
+      promptConfig: { title: '', content: '', type: '' }
     };
     this.showPromptDialog = this.showPromptDialog.bind(this);
     this.closePromptDialog = this.closePromptDialog.bind(this);
@@ -25,9 +25,15 @@ class BasicInfoPage extends PureComponent {
   componentWillReceiveProps(nextProps) {}
 
   showPromptDialog(key, value) {
+    const map = {
+      企业名称: 'name',
+      企业联系人名称: 'contact',
+      企业所在行业: 'industry'
+    };
     this.setState({
       canShowPrompt: true,
       promptConfig: {
+        type: map[key],
         title: key,
         content: value
       }
@@ -40,10 +46,15 @@ class BasicInfoPage extends PureComponent {
     });
   }
 
-  updateEnterpriseInfo() {
-    // TODO: API 调用
+  updateEnterpriseInfo(params) {
     this.closePromptDialog();
-    this.toggleToast();
+    this.props
+      .updateUserInfo(params)
+      .then(() => {
+        this.toggleToast();
+        this.props.getUserInfo();
+      })
+      .catch(err => {});
   }
 
   toggleToast() {
@@ -116,7 +127,8 @@ class BasicInfoPage extends PureComponent {
 }
 
 BasicInfoPage.propTypes = {
-  register: PropTypes.func,
+  updateUserInfo: PropTypes.func,
+  getUserInfo: PropTypes.func,
   mobile: PropTypes.string,
   name: PropTypes.string,
   contact: PropTypes.string,
@@ -140,7 +152,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    register: params => dispatch(registerAction(params))
+    updateUserInfo: params => dispatch(updateUserInfoAction(params)),
+    getUserInfo: params => dispatch(getUserInfoAction(params))
   };
 };
 

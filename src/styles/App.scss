@@ -27,10 +27,22 @@
       }
     }
     .right{
+      font-size: 12px;
+      color: #fff;
+      .shimo{
+        height: 20px;
+        margin-right: 20px;
+      }
       a{
-        font-size: 12px;
+        display: inline-block;
         color: #fff;
         letter-spacing: 1.7px;
+        width: 78px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 2px;
+        background-image: linear-gradient(111deg, #41464b, #2c3033);
         &:hover{
           cursor: pointer;
         }

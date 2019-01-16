@@ -1,10 +1,11 @@
-import { LOGIN, UPDATE_USER_INFO, REGISTER } from '../actionType';
+import { LOGIN, REGISTER, GET_USER_INFO, RESET } from '../actionType';
 import { Record, Map } from 'immutable';
 import { handleActions } from 'redux-actions';
 // 语法：handleActions({actionCreator},initialState)
 
 const localUserInfo = window.localStorage.getItem('userInfo');
-const userInfo = localUserInfo !== 'undefined' && JSON.parse(localUserInfo);
+const userInfo =
+  localUserInfo && localUserInfo !== 'undefined' && JSON.parse(localUserInfo);
 
 const UserInfoRecord = Record(
   userInfo || {
@@ -23,6 +24,7 @@ const UserInfoRecord = Record(
         {
           ID: '', // 企业ID
           secret: 'MockSecret', // 企业 Secret
+          stage: 'sandbox', // sandbox表示测试环境; production 表示正式环境
           createdAt: '',
           clientID: '',
           expireTime: '2019-02-09T15:37:26.246001+08:00' // 过期时间
@@ -37,16 +39,31 @@ const defaultUserInfo = new UserInfoRecord();
 export default handleActions(
   {
     [LOGIN](state, action) {
-      state = state.merge(action.payload.user);
+      if (action.payload && action.payload.user && action.payload.token) {
+        state = state
+          .set('token', action.payload.token)
+          .set('user', action.payload.user);
+      }
       window.localStorage.setItem('userInfo', JSON.stringify(state.toJS()));
       return state;
     },
     [REGISTER](state, action) {
-      return state.merge(action.payload);
+      if (action.payload && action.payload.user && action.payload.token) {
+        state = state
+          .set('token', action.payload.token)
+          .set('user', action.payload.user);
+      }
+      return state;
     },
-    [UPDATE_USER_INFO](state, action) {
-      state = state.set(state.user, action.payload && action.payload.user);
-      window.localStorage.setItem('userInfo', JSON.stringify(state.toJS()));
+    [GET_USER_INFO](state, action) {
+      if (action.payload && action.payload.ID) {
+        state = state.set('user', action.payload);
+        window.localStorage.setItem('userInfo', JSON.stringify(state.toJS()));
+      }
+      return state;
+    },
+    [RESET](state, action) {
+      state = state.set('token', '');
       return state;
     }
   },

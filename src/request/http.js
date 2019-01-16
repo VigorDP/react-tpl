@@ -3,9 +3,9 @@
  */
 import axios from 'axios';
 import QS from 'qs';
-// import { Toast } from 'vant'
 import store from 'store';
 import { PROXYPATH } from './env';
+import { resetAction } from 'store/actions';
 
 // 环境的切换
 axios.defaults.baseURL = PROXYPATH;
@@ -35,34 +35,26 @@ axios.interceptors.response.use(
     if (response && (response.status === 200 || response.status === 201)) {
       return Promise.resolve(response);
     } else {
-      console.log('axios response', response);
       return Promise.reject(response);
     }
   },
   // 服务器状态码不是200的情况
   error => {
-    const status = error && error.status;
+    const status = error && error.response.status;
     if (status) {
       switch (status) {
         // 400
         case 400:
-          alert(error.message);
-          break;
         // 401 未登录
         case 401:
-        // 403 token 过期
-        case 403:
-          window.localStorage.clear('token');
+          window.localStorage.removeItem('userInfo');
+          store.dispatch(resetAction());
           window.location.hash = '#/login';
           break;
-        // 404 请求不存在
-        case 404:
         default:
-          alert(error.status);
-          break;
+          return Promise.reject(error);
       }
     } else {
-      // alert('未知错误');
       return Promise.reject(error);
     }
   }

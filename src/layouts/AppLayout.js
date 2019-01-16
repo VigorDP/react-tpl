@@ -2,11 +2,31 @@ import React, { Component } from 'react';
 import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import BasicInfoPage from 'pages/BasicInfoPage';
 import ConfigInfoPage from 'pages/ConfigInfoPage';
-
+import { getUserInfoAction, resetAction } from 'store/actions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from 'styles/app.scss';
 import leftLogo from 'assets/imgs/logo.png';
 
-export default class App extends Component {
+class AppLayout extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  componentDidMount() {
+    this.props
+      .getUserInfo()
+      .then()
+      .catch(err => {});
+  }
+
+  handleLogout() {
+    this.props.resetAction();
+    window.localStorage.removeItem('userInfo');
+    window.location.hash = '#/login';
+  }
+
   render() {
     const { match, history } = this.props;
     return (
@@ -17,7 +37,10 @@ export default class App extends Component {
             <span>SDK企业后台</span>
           </div>
           <div className={styles.right}>
-            <NavLink to="/login">退出登录</NavLink>
+            <span className={styles.shimo}>您好，武汉初心科技有限公司</span>
+            <NavLink to="/login" onClick={this.handleLogout}>
+              退出登录
+            </NavLink>
           </div>
         </div>
 
@@ -57,7 +80,7 @@ export default class App extends Component {
                 component={ConfigInfoPage}
                 exact={true}
               />
-              <Redirect to={`${match.path}/ent-conf`} />
+              <Redirect to={`${match.path}/ent-info`} />
             </Switch>
           </div>
         </div>
@@ -65,3 +88,20 @@ export default class App extends Component {
     );
   }
 }
+
+AppLayout.propTypes = {
+  getUserInfo: PropTypes.func,
+  resetAction: PropTypes.func
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getUserInfo: params => dispatch(getUserInfoAction(params)),
+    resetAction: params => dispatch(resetAction(params))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AppLayout);

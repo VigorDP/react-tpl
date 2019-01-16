@@ -11,8 +11,8 @@ class LoginLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: '15926339107',
-      password: '111111',
+      mobile: props.mobile,
+      password: props.password,
       logining: false,
       errorText: ''
     };
@@ -80,10 +80,18 @@ class LoginLayout extends Component {
         this.props.history.push('/app');
       })
       .catch(err => {
-        this.setState({
-          errorText: `登录失败,请稍后再试！`,
-          logining: false
-        });
+        const { code, message } = err.response.data;
+        if (code === '40003' || code === '40004') {
+          this.setState({
+            errorText: message,
+            logining: false
+          });
+        } else {
+          this.setState({
+            errorText: '未知错误',
+            logining: false
+          });
+        }
       });
   }
 
@@ -165,12 +173,15 @@ class LoginLayout extends Component {
 }
 
 LoginLayout.propTypes = {
-  login: PropTypes.func
+  login: PropTypes.func,
+  mobile: PropTypes.string,
+  password: PropTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    mobile: state.getIn(['userInfo', 'user']).mobile
+    mobile: state.getIn(['userInfo', 'user']).mobile,
+    password: state.getIn(['userInfo', 'user']).password
   };
 };
 

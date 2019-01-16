@@ -19,10 +19,10 @@ class RegisterLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: '13260615728',
-      verifyCode: '2222',
-      password: '111111',
-      repeatPassword: '111111',
+      mobile: props.mobile,
+      verifyCode: '',
+      password: props.password,
+      repeatPassword: props.password,
       registering: false,
       initSeconds: SECONDS, // 验证码倒计时
       errorText: ''
@@ -125,34 +125,6 @@ class RegisterLayout extends Component {
     });
   }
 
-  handleRegister() {
-    const isCheckPassed = this.checkForm();
-    if (!isCheckPassed) {
-      return;
-    }
-
-    const { register, history } = this.props;
-    const { mobile, password, verifyCode } = this.state;
-    this.setState({ registering: true });
-
-    // TODO: 注册
-    register({ mobile, password, code: verifyCode })
-      .then(() => {
-        history.push('/updateUserInfo');
-      })
-      .catch(err => {
-        console.log('register error', err);
-        this.setState({
-          errorText: '注册失败'
-        });
-      })
-      .finally(() => {
-        this.setState({
-          registering: false
-        });
-      });
-  }
-
   sendVerifyCode() {
     const { mobile, initSeconds } = this.state;
 
@@ -188,11 +160,9 @@ class RegisterLayout extends Component {
       }
     }, 1000);
 
-    // TODO: sendVerifyCode
     sendCode({ mobile })
       .then(res => {})
       .catch(err => {
-        console.log('sendCode error', err);
         this.setState({
           errorText: '发送验证码失败'
         });
@@ -222,6 +192,41 @@ class RegisterLayout extends Component {
       return false;
     }
     return true;
+  }
+
+  handleRegister() {
+    const isCheckPassed = this.checkForm();
+    if (!isCheckPassed) {
+      return;
+    }
+
+    const { register, history } = this.props;
+    const { mobile, password, verifyCode } = this.state;
+    this.setState({ registering: true });
+
+    register({ mobile, password, code: verifyCode })
+      .then(() => {
+        history.push('/updateUserInfo');
+      })
+      .catch(err => {
+        const { code, message } = err.response.data;
+        if (code === '40001' || code === '40002') {
+          this.setState({
+            errorText: message,
+            logining: false
+          });
+        } else {
+          this.setState({
+            errorText: '未知错误',
+            logining: false
+          });
+        }
+      })
+      .finally(() => {
+        this.setState({
+          registering: false
+        });
+      });
   }
 
   render() {
@@ -336,12 +341,15 @@ class RegisterLayout extends Component {
 }
 
 RegisterLayout.propTypes = {
-  register: PropTypes.func
+  register: PropTypes.func,
+  mobile: PropTypes.string,
+  password: PropTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    mobile: state.getIn(['userInfo', 'user']).mobile
+    mobile: state.getIn(['userInfo', 'user']).mobile,
+    password: state.getIn(['userInfo', 'user']).password
   };
 };
 

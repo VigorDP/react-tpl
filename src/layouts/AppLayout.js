@@ -47,11 +47,9 @@ class AppLayout extends Component {
         <div className={styles.contentContainer}>
           <div className={styles.leftMenu}>
             <NavLink
-              to={`${match.path}/ent-info`}
+              to={match.path}
               className={`${
-                history.location.pathname === '/app/ent-info'
-                  ? styles.active
-                  : ''
+                history.location.pathname === '/' ? styles.active : ''
               }`}
             >
               企业信息
@@ -70,20 +68,12 @@ class AppLayout extends Component {
 
           <div className={styles.rightContent}>
             <Switch>
-              <Route
-                path={`${match.path}`}
-                component={BasicInfoPage}
-                exact={true}
-              />
-              <Route
-                path={`${match.path}/ent-info`}
-                component={BasicInfoPage}
-              />
+              <Route path={match.path} component={BasicInfoPage} exact={true} />
               <Route
                 path={`${match.path}/ent-conf`}
                 component={ConfigInfoPage}
               />
-              <Redirect to={`${match.path}/ent-info`} />
+              <Redirect to={match.path} />
             </Switch>
           </div>
         </div>

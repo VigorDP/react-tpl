@@ -18,7 +18,7 @@ ReactDOM.render(
         <Route path="/login" component={LoginLayout} />
         <Route path="/register" component={RegisterLayout} />
         <Route path="/updateUserInfo" component={UpdateUserInfoLayout} />
-        <Route path="/app" component={AppLayout} />
+        {/* <Route path="/app" component={AppLayout} /> */}
         <Redirect to="/login" />
       </Switch>
     </HashRouter>

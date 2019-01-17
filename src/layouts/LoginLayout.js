@@ -11,8 +11,8 @@ class LoginLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: props.mobile,
-      password: props.password,
+      mobile: props.mobile || '',
+      password: props.password || '',
       logining: false,
       errorText: ''
     };

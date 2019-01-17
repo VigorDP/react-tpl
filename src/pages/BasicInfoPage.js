@@ -22,13 +22,12 @@ class BasicInfoPage extends PureComponent {
     this.toggleToast = this.toggleToast.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {}
-
   showPromptDialog(key, value) {
     const map = {
       企业名称: 'name',
       企业联系人名称: 'contact',
-      企业所在行业: 'industry'
+      企业所在行业: 'industry',
+      企业联系人邮箱: 'email'
     };
     this.setState({
       canShowPrompt: true,
@@ -64,7 +63,15 @@ class BasicInfoPage extends PureComponent {
   }
 
   getTableConfig(config) {
-    const { mobile, name, industry, contact, createdAt, lastSignInAt } = config;
+    const {
+      mobile,
+      name,
+      industry,
+      contact,
+      createdAt,
+      lastSignInAt,
+      email
+    } = config;
     const tableConfig = {
       title: '企业信息',
       content: [
@@ -81,6 +88,11 @@ class BasicInfoPage extends PureComponent {
         {
           key: '企业联系人电话',
           value: mobile,
+          canEditable: false
+        },
+        {
+          key: '企业联系人邮箱',
+          value: email,
           canEditable: false
         },
         {

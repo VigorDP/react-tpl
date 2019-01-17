@@ -19,10 +19,10 @@ class RegisterLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: props.mobile,
+      mobile: props.mobile || '',
       verifyCode: '',
-      password: props.password,
-      repeatPassword: props.password,
+      password: props.password || '',
+      repeatPassword: props.password || '',
       registering: false,
       initSeconds: SECONDS, // 验证码倒计时
       errorText: ''

@@ -224,18 +224,6 @@ UpdateUserInfoLayout.propTypes = {
   updateUserInfo: PropTypes.func
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    mobile: state.getIn(['userInfo', 'user', 'mobile']),
-    name: state.getIn(['userInfo', 'user', 'name']),
-    contact: state.getIn(['userInfo', 'user', 'contact']),
-    industry: state.getIn(['userInfo', 'user', 'industry']),
-    createdAt: state.getIn(['userInfo', 'user', 'createdAt']),
-    lastSignInAt: state.getIn(['userInfo', 'user', 'lastSignInAt']),
-    config: state.getIn(['userInfo', 'user', 'config'])
-  };
-};
-
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     updateUserInfo: params => dispatch(updateUserInfoAction(params))
@@ -243,6 +231,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(UpdateUserInfoLayout);

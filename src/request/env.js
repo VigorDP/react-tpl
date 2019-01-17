@@ -19,9 +19,9 @@ module.exports = {
 function getProxyPath(env) {
   let proxyPath = '/devApi';
   if (env === 'test') {
-    proxyPath = '/testApi';
+    proxyPath = '/es-console/api';
   } else if (env === 'production') {
-    proxyPath = '/prodApi';
+    proxyPath = '/es-console/api';
   }
   return proxyPath;
 }

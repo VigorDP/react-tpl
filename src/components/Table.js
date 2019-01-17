@@ -19,11 +19,7 @@ class Table extends React.Component {
   }
 
   addExpiredText(expiredTime) {
-    return dayjs().isAfter(dayjs(expiredTime)) ? (
-      <span style="color:red">(已过期)'</span>
-    ) : (
-      ''
-    );
+    return dayjs().isAfter(dayjs(expiredTime)) ? '已过期' : '';
   }
 
   render() {
@@ -58,12 +54,13 @@ class Table extends React.Component {
                 {line.key === '注册时间' ||
                 line.key === '最后登录时间' ||
                 line.key === '有效期至'
-                  ? `${formatTime({ time: line.value })} ${
-                      line.key === '有效期至'
-                        ? this.addExpiredText(line.expiredAt)
-                        : ''
-                    }`
+                  ? `${formatTime({ time: line.value })}`
                   : line.value}
+                <span className={styles.expiredText}>
+                  {line.key === '有效期至'
+                    ? `(${this.addExpiredText(line.value)})`
+                    : ''}
+                </span>
               </div>
               {line.canEditable && (
                 <div

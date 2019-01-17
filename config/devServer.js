@@ -9,7 +9,7 @@ module.exports = {
     [proxyPath]: {
       target: HOST[env],
       changeOrigin: true,
-      pathRewrite: { [proxyPath]: '/es-console' }
+      pathRewrite: { [proxyPath]: '/es-console/api' }
     }
   }
 };

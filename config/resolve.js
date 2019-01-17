@@ -16,7 +16,7 @@ module.exports = {
     components: resolve('src/components'),
     containers: resolve('src/containers'),
     layouts: resolve('src/layouts'),
-    styles: resolve('src/styles'),
+    styles: resolve('data/src/styles'),
     utils: resolve('src/utils')
   }
 };

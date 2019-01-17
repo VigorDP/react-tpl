@@ -103,7 +103,7 @@ class UpdateUserInfoLayout extends Component {
       email: companyEmail
     })
       .then(() => {
-        history.push('/');
+        history.push('/?from=');
       })
       .catch(err => {
         this.setState({

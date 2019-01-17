@@ -11,6 +11,9 @@ import leftLogo from 'assets/imgs/logo.png';
 class AppLayout extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showToast: false
+    };
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -31,6 +34,7 @@ class AppLayout extends Component {
     const { match, history } = this.props;
     return (
       <div className={styles.appContainer}>
+        {/* <Toast /> */}
         <div className={styles.headerContainer}>
           <div className={styles.left}>
             <img src={leftLogo} />

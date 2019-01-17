@@ -206,7 +206,7 @@ class RegisterLayout extends Component {
 
     register({ mobile, password, code: verifyCode })
       .then(() => {
-        history.push('/updateUserInfo');
+        history.push('/updateUserInfo?from=register');
       })
       .catch(err => {
         const { code, message } = err.response.data;

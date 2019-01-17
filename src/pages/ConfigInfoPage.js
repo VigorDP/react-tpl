@@ -11,7 +11,7 @@ class ConfigInfoPage extends PureComponent {
     let tableTestConfig = {};
     let tableProdConfig = {};
     configs.forEach(config => {
-      const { id, secret, expireTime, stages } = config;
+      const { clientID, secret, expireTime, stages } = config;
       if (stages === 'sandbox') {
         // 测试环境
         tableTestConfig = {
@@ -19,7 +19,7 @@ class ConfigInfoPage extends PureComponent {
           content: [
             {
               key: '企业 id',
-              value: id,
+              value: clientID,
               canEditable: false
             },
             {
@@ -41,7 +41,7 @@ class ConfigInfoPage extends PureComponent {
           content: [
             {
               key: '企业 id',
-              value: id,
+              value: clientID,
               canEditable: false
             },
             {

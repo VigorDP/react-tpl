@@ -16,8 +16,8 @@ const getUserInfo = () => {
 };
 
 // 更新企业信息
-const updateUserInfo = ({ name, contact, industry } = {}) => {
-  return patch('/user', { name, contact, industry });
+const updateUserInfo = ({ name, contact, industry, email } = {}) => {
+  return patch('/user', { name, contact, industry, email });
 };
 
 // 发送验证码

@@ -93,7 +93,7 @@ class BasicInfoPage extends PureComponent {
         {
           key: '企业联系人邮箱',
           value: email,
-          canEditable: false
+          canEditable: true
         },
         {
           key: '企业所在行业',
@@ -142,6 +142,7 @@ BasicInfoPage.propTypes = {
   updateUserInfo: PropTypes.func,
   getUserInfo: PropTypes.func,
   mobile: PropTypes.string,
+  email: PropTypes.string,
   name: PropTypes.string,
   contact: PropTypes.string,
   industry: PropTypes.string,
@@ -153,6 +154,7 @@ BasicInfoPage.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return {
     mobile: state.getIn(['userInfo', 'user']).mobile,
+    email: state.getIn(['userInfo', 'user']).email,
     name: state.getIn(['userInfo', 'user']).name,
     contact: state.getIn(['userInfo', 'user']).contact,
     industry: state.getIn(['userInfo', 'user']).industry,

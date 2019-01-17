@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './promptDialog.scss';
-
+import { validateEmail, validateEmpty } from 'utils/checkForm';
 class PromptDialog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: props.config.content,
-      title: props.config.title,
-      type: props.config.type
+      content: props.config.content || '',
+      title: props.config.title || '',
+      type: props.config.type || ''
     };
     this.handleInput = this.handleInput.bind(this);
     this.updateEnterpriseInfo = this.updateEnterpriseInfo.bind(this);
@@ -23,8 +23,15 @@ class PromptDialog extends React.Component {
   updateEnterpriseInfo() {
     const { content, type } = this.state;
     const { updateEnterpriseInfo } = this.props;
-    if (!content) {
-      alert('该字段不能为空');
+    let checktResult = [true, ''];
+    if (type === 'email') {
+      checktResult = validateEmail(content);
+    } else {
+      checktResult = validateEmpty(content, type);
+    }
+    if (!checktResult[0]) {
+      alert(checktResult[1]);
+      return;
     } else {
       updateEnterpriseInfo({
         [type]: content

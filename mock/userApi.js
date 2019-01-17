@@ -12,7 +12,7 @@ const mock = {
           createdAt: '2014', // 注册时间
           lastSignInAt: '2017', // 上次登录时间
           config: {
-            ID: '123', // 企业ID
+            id: '123', // 企业ID
             secret: 'MockSecret', // 企业 Secret
             expireTime: '2019-02-09T15:37:26.246001+08:00' // 过期时间
           }

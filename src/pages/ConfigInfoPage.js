@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import Table from 'components/Table';
 import styles from 'styles/basicInfoPage.scss';
-import getUrlByType from 'utils/getRedirectUrl';
 import { connect } from 'react-redux';
 import { registerAction } from 'store/actions';
 import PropTypes from 'prop-types';
@@ -12,15 +11,15 @@ class ConfigInfoPage extends PureComponent {
     let tableTestConfig = {};
     let tableProdConfig = {};
     configs.forEach(config => {
-      const { ID, secret, expireTime, stage } = config;
-      if (stage === 'sandbox') {
+      const { id, secret, expireTime, stages } = config;
+      if (stages === 'sandbox') {
         // 测试环境
         tableTestConfig = {
           title: '测试环境',
           content: [
             {
-              key: '企业 ID',
-              value: ID,
+              key: '企业 id',
+              value: id,
               canEditable: false
             },
             {
@@ -35,14 +34,14 @@ class ConfigInfoPage extends PureComponent {
             }
           ]
         };
-      } else if (stage === 'production') {
+      } else if (stages === 'production') {
         // 正式环境
         tableProdConfig = {
           title: '正式环境',
           content: [
             {
-              key: '企业 ID',
-              value: ID,
+              key: '企业 id',
+              value: id,
               canEditable: false
             },
             {
@@ -64,23 +63,13 @@ class ConfigInfoPage extends PureComponent {
   }
   render() {
     const { testConfig, prodConfig } = this.getTableConfig(this.props.configs);
-    const hasConfig = testConfig.title && prodConfig.title;
+    const hasConfig = testConfig.title || prodConfig.title;
     if (!hasConfig) {
       return <div className={styles.empty}>暂无配置</div>;
     }
     return (
       <div className={styles.container}>
         <Table config={testConfig} />
-        {testConfig.title && (
-          <div className={styles.goToDemo}>
-            <a className={styles.button} href={getUrlByType('demo')}>
-              去体验 Demo
-            </a>
-            <span className={styles.tip}>
-              请使用企业ID和Secret在测试环境注册账号
-            </span>
-          </div>
-        )}
         <Table config={prodConfig} />
       </div>
     );

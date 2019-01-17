@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './table.scss';
 import { formatTime } from 'utils/format';
 import dayjs from 'dayjs';
+import getUrlByType from 'utils/getRedirectUrl';
+
 class Table extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +37,19 @@ class Table extends React.Component {
 
     return (
       <div>
-        <h2>{title}</h2>
+        <div className={styles.titleWrapper}>
+          <h2>{title}</h2>
+          {title === '测试环境' && (
+            <div className={styles.goToDemo}>
+              <span className={styles.tip}>
+                请使用 Client id 和 Secret 在测试环境注册账号
+              </span>
+              <a className={styles.button} href={getUrlByType('demo')}>
+                去体验 Demo
+              </a>
+            </div>
+          )}
+        </div>
         <div className={styles.outWrapper}>
           {content.map((line, index) => (
             <div className={styles.commonLine} key={index}>

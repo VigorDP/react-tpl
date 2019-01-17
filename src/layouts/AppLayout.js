@@ -37,7 +37,7 @@ class AppLayout extends Component {
             <span>SDK企业后台</span>
           </div>
           <div className={styles.right}>
-            <span className={styles.shimo}>您好，武汉初心科技有限公司</span>
+            <span className={styles.shimo}>您好，{this.props.name}</span>
             <NavLink to="/login" onClick={this.handleLogout}>
               退出登录
             </NavLink>
@@ -84,7 +84,14 @@ class AppLayout extends Component {
 
 AppLayout.propTypes = {
   getUserInfo: PropTypes.func,
-  resetAction: PropTypes.func
+  resetAction: PropTypes.func,
+  name: PropTypes.string
+};
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    name: state.getIn(['userInfo', 'user']).name
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -95,6 +102,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AppLayout);

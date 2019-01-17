@@ -1,3 +1,29 @@
+.titleWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  line-height: 30px;
+  .goToDemo{
+    font-size: 12px;
+    a{
+      display: inline-block;
+      width: 130px;
+      text-align: center;
+      border-radius: 4px;
+      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.13);
+      background-image: linear-gradient(104deg, #41464b, #2c3033);
+      color:white;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    span{
+      color: #41464b;
+      margin-right: 20px;
+    }
+  }
+}
 .outWrapper{
   margin-top: 14px;
   .commonLine{

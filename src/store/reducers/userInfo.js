@@ -11,7 +11,7 @@ const UserInfoRecord = Record(
   userInfo || {
     token: '',
     user: {
-      ID: 'testID',
+      id: 'testID',
       createdAt: '',
       email: '',
       mobile: '', // 手机号
@@ -22,9 +22,9 @@ const UserInfoRecord = Record(
       lastSignInAt: '', // 上次登录时间
       configs: [
         {
-          ID: '', // 企业ID
+          id: '', // 企业ID
           secret: 'MockSecret', // 企业 Secret
-          stage: 'sandbox', // sandbox表示测试环境; production 表示正式环境
+          stages: 'sandbox', // sandbox表示测试环境; production 表示正式环境
           createdAt: '',
           clientID: '',
           expireTime: '2019-02-09T15:37:26.246001+08:00' // 过期时间
@@ -56,7 +56,7 @@ export default handleActions(
       return state;
     },
     [GET_USER_INFO](state, action) {
-      if (action.payload && action.payload.ID) {
+      if (action.payload && action.payload.id) {
         state = state.set('user', action.payload);
         window.localStorage.setItem('userInfo', JSON.stringify(state.toJS()));
       }

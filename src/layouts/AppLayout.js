@@ -5,7 +5,7 @@ import ConfigInfoPage from 'pages/ConfigInfoPage';
 import { getUserInfoAction, resetAction } from 'store/actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from 'styles/app.scss';
+import styles from 'styles/appLayout.scss';
 import leftLogo from 'assets/imgs/logo.png';
 
 class AppLayout extends Component {

@@ -55,9 +55,9 @@ class AppLayout extends Component {
               企业信息
             </NavLink>
             <NavLink
-              to={`${match.path}/ent-conf`}
+              to={`${match.path}ent-conf`}
               className={`${
-                history.location.pathname === '/app/ent-conf'
+                history.location.pathname === match.path + 'ent-conf'
                   ? styles.active
                   : ''
               }`}
@@ -70,7 +70,7 @@ class AppLayout extends Component {
             <Switch>
               <Route path={match.path} component={BasicInfoPage} exact={true} />
               <Route
-                path={`${match.path}/ent-conf`}
+                path={`${match.path}ent-conf`}
                 component={ConfigInfoPage}
               />
               <Redirect to={match.path} />

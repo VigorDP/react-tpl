@@ -24,6 +24,9 @@ function validateEmail(email) {
 
 function validatePassword(password) {
   var validPasswdPattern = /^[a-zA-Z0-9·`~!@#$%^&*()-_+=[\]{}\\|;:'",<.>/?\s\uFEFF\xA0]*$/;
+  if (!password || !password.trim()) {
+    return [false, '请输入您的密码'];
+  }
   if (password.length < 6) {
     return [false, '密码长度不能小于 6 位'];
   }
@@ -44,7 +47,7 @@ function validateRepeatPassword(old, repeat) {
 
 function validateVerifyCode(verifyCode) {
   var reg = /\d{4}/;
-  if (!verifyCode) {
+  if (!verifyCode || !verifyCode.trim()) {
     return [false, '请输入验证码'];
   } else if (verifyCode.length > 4) {
     return [false, '验证码长度应为 4 位'];

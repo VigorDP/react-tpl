@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import AppLayout from 'layouts/AppLayout';
+// import AppLayout from 'layouts/AppLayout';
 import LoginLayout from 'layouts/LoginLayout';
 import RegisterLayout from 'layouts/RegisterLayout';
 import UpdateUserInfoLayout from 'layouts/UpdateUserInfoLayout';
@@ -17,7 +17,7 @@ ReactDOM.render(
         <Route path="/login" component={LoginLayout} />
         <Route path="/register" component={RegisterLayout} />
         <Route path="/updateUserInfo" component={UpdateUserInfoLayout} />
-        <Route path="/app" component={AppLayout} />
+        {/* <Route path="/app" component={AppLayout} /> */}
         <Redirect to="/login" />
       </Switch>
     </HashRouter>

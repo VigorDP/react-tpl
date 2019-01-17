@@ -14,6 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
       <Switch>
+        <Route path="/" exact={true} component={AppLayout} />
         <Route path="/login" component={LoginLayout} />
         <Route path="/register" component={RegisterLayout} />
         <Route path="/updateUserInfo" component={UpdateUserInfoLayout} />

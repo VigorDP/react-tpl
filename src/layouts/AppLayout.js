@@ -71,14 +71,17 @@ class AppLayout extends Component {
           <div className={styles.rightContent}>
             <Switch>
               <Route
-                path={`${match.path}/ent-info`}
+                path={`${match.path}`}
                 component={BasicInfoPage}
                 exact={true}
               />
               <Route
+                path={`${match.path}/ent-info`}
+                component={BasicInfoPage}
+              />
+              <Route
                 path={`${match.path}/ent-conf`}
                 component={ConfigInfoPage}
-                exact={true}
               />
               <Redirect to={`${match.path}/ent-info`} />
             </Switch>

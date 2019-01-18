@@ -14,6 +14,10 @@ const plugins = [
     template: resolve('src/index.html'),
     filename: resolve('dist/index.html')
   }),
+  new ExtractTextPlugin({
+    filename: '[name].[hash:8].min.css',
+    allChunks: false // allChunks必须指明为false。否则会包括异步加载的 CSS！
+  }),
   new webpack.HotModuleReplacementPlugin(),
   new CopyWebpackPlugin([{ context: 'src/assets', from: '**/*', to: 'assets' }])
 ];

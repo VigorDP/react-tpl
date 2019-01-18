@@ -5,38 +5,60 @@ module.exports = {
   rules: [
     {
       test: /\.(js|jsx)$/,
-      loader: require.resolve('babel-loader'),
-      options: {
-        plugins: [
-          [
-            require.resolve('babel-plugin-import'),
-            { libraryName: 'antd', style: 'css' }
-          ]
-        ]
-      },
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+          options: {
+            plugins: [
+              [
+                require.resolve('babel-plugin-import'),
+                { libraryName: 'antd', style: 'css' }
+              ]
+            ]
+          }
+        }
+      ],
       include: [resolve('src'), resolve('test')],
       exclude: [resolve('node_modules')]
     },
     {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader'],
+      use: [
+        { loader: 'style-loader/url', options: { attrs: { id: 'antd' } } },
+        'file-loader'
+      ],
       include: [resolve('src'), resolve('node_modules')]
     },
     {
       test: /\.scss$/,
-      use: [
-        'style-loader',
-        'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
-        {
-          loader: 'postcss-loader',
-          options: {
-            plugins: [
-              require('autoprefixer')({ browsers: ['> 1%', 'last 2 versions'] })
-            ]
-          }
+      use: ExtractTextPlugin.extract({
+        fallback: {
+          loader: 'style-loader'
         },
-        'sass-loader'
-      ],
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+              importLoaders: 0,
+              modules: true, // css-modules 开关
+              localIdentName: '[name]_[local]_[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')({
+                  browsers: ['> 1%', 'last 2 versions']
+                })
+              ]
+            }
+          },
+          'sass-loader'
+        ]
+      }),
+
       include: [resolve('src')]
     },
     {

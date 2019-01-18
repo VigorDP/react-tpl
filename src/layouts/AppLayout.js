@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from 'styles/appLayout.scss';
 import leftLogo from 'assets/imgs/logo.png';
+import { Button } from 'antd';
 
 class AppLayout extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class AppLayout extends Component {
     return (
       <div className={styles.appContainer}>
         {/* <Toast /> */}
+        <Button type="primary">123</Button>
         <div className={styles.headerContainer}>
           <div className={styles.left}>
             <img src={leftLogo} />

@@ -1,17 +1,38 @@
-const resolve = require('path').resolve
+const resolve = require('path').resolve;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   rules: [
     {
       test: /\.(js|jsx)$/,
-      use: ['babel-loader'],
+      loader: require.resolve('babel-loader'),
+      options: {
+        plugins: [
+          [
+            require.resolve('babel-plugin-import'),
+            { libraryName: 'antd', style: 'css' }
+          ]
+        ]
+      },
       include: [resolve('src'), resolve('test')],
       exclude: [resolve('node_modules')]
     },
     {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: [resolve('src')]
+      use: [
+        'style-loader',
+        { loader: 'css-loader', options: { modules: true, importLoaders: 1 } },
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: [
+              require('autoprefixer')({ browsers: ['last 2 versions'] })
+            ]
+          }
+        }
+      ],
+      include: [resolve('src'), resolve('node_modules')]
     },
     {
       test: /\.scss$/,
@@ -42,4 +63,4 @@ module.exports = {
       ]
     }
   ]
-}
+};

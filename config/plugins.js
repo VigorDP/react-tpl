@@ -1,10 +1,12 @@
-const resolve = require('path').resolve
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const webpack = require('webpack')
+const resolve = require('path').resolve;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
+const webpack = require('webpack');
 
-module.exports = [
+const plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // 定义客户端代码中的全局变量
   }),
@@ -14,5 +16,10 @@ module.exports = [
   }),
   new webpack.HotModuleReplacementPlugin(),
   new ExtractTextPlugin('[name].[contenthash].css'),
-  new CopyWebpackPlugin([{ context: 'src/assets', from: '**/*',to:'assets'}])
-]
+  new CopyWebpackPlugin([{ context: 'src/assets', from: '**/*', to: 'assets' }])
+];
+
+process.env.NODE_ENV === 'production' &&
+  plugins.push(new BundleAnalyzerPlugin());
+
+module.exports = plugins;

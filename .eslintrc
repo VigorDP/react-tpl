@@ -65,7 +65,7 @@
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
     "react/jsx-wrap-multilines": 1,
-    "react/prop-types": [2, { "ignore": ["children", "navigation","match","history"] }],
+    "react/prop-types": [2, { "ignore": ["children", "navigation","match","history","lastLocation"] }],
     "jsx-quotes": 1,
     "prettier/prettier": "error"
   }

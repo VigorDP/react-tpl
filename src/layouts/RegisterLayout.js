@@ -19,7 +19,7 @@ class RegisterLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: props.mobile || '15926338000',
+      mobile: props.mobile || '15926339105',
       verifyCode: '9999',
       password: props.password || '111111',
       repeatPassword: props.password || '111111',
@@ -206,7 +206,7 @@ class RegisterLayout extends Component {
 
     register({ mobile, password, code: verifyCode })
       .then(() => {
-        history.push('/updateUserInfo?from=register');
+        history.push('/updateUserInfo');
       })
       .catch(err => {
         const { code, message } = err.response.data;
@@ -223,9 +223,10 @@ class RegisterLayout extends Component {
         }
       })
       .finally(() => {
-        this.setState({
-          registering: false
-        });
+        this._mounted &&
+          this.setState({
+            registering: false
+          });
       });
   }
 

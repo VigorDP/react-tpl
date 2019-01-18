@@ -77,7 +77,7 @@ class LoginLayout extends Component {
 
     login({ mobile, password })
       .then(() => {
-        this.props.history.push('/?from=login');
+        this.props.history.push('/');
       })
       .catch(err => {
         const { code, message } = err.response.data;

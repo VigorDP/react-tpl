@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { updateUserInfoAction } from 'store/actions';
 import PropTypes from 'prop-types';
 import logo from 'assets/imgs/logo.png';
-import queryString from 'query-string';
+import { withLastLocation } from 'react-router-last-location';
+// import queryString from 'query-string';
 import getTipText from 'utils/getTipText';
 import { message } from 'antd';
 class UpdateUserInfoLayout extends Component {
@@ -27,12 +28,13 @@ class UpdateUserInfoLayout extends Component {
   }
 
   componentDidMount() {
-    const from = queryString.parse(window.location.search).from;
-    // if (from === 'register') {
-    //   message.success(getTipText({ path: from }).success);
-    // } else {
-    //   this.props.history.replace('/login');
-    // }
+    const lastLocation = this.props.lastLocation;
+    const lastPathname = lastLocation && lastLocation.pathname.slice(1);
+    if (lastPathname === 'register') {
+      message.success(getTipText({ path: lastPathname }).success);
+    } else {
+      this.props.history.replace('/login');
+    }
   }
 
   showErrorText(result) {
@@ -114,7 +116,7 @@ class UpdateUserInfoLayout extends Component {
       email: companyEmail
     })
       .then(() => {
-        history.push('/?from=');
+        history.push('/');
       })
       .catch(err => {
         this.setState({
@@ -244,4 +246,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   null,
   mapDispatchToProps
-)(UpdateUserInfoLayout);
+)(withLastLocation(UpdateUserInfoLayout));

@@ -6,21 +6,22 @@ import AppLayout from 'layouts/AppLayout';
 import LoginLayout from 'layouts/LoginLayout';
 import RegisterLayout from 'layouts/RegisterLayout';
 import UpdateUserInfoLayout from 'layouts/UpdateUserInfoLayout';
-
+import { LastLocationProvider } from 'react-router-last-location';
 import store from 'store';
 import './styles/reset.scss';
 
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      <Switch>
-        <Route path="/login" component={LoginLayout} />
-        <Route path="/register" component={RegisterLayout} />
-        <Route path="/updateUserInfo" component={UpdateUserInfoLayout} />
-        {/* <Route path="/app" component={AppLayout} /> */}
-        <Route path="/" component={AppLayout} />
-        <Redirect to="/login" />
-      </Switch>
+      <LastLocationProvider watchOnlyPathname={true}>
+        <Switch>
+          <Route path="/login" component={LoginLayout} />
+          <Route path="/register" component={RegisterLayout} />
+          <Route path="/updateUserInfo" component={UpdateUserInfoLayout} />
+          <Route path="/" component={AppLayout} />
+          <Redirect to="/login" />
+        </Switch>
+      </LastLocationProvider>
     </HashRouter>
   </Provider>,
   document.getElementById('root')

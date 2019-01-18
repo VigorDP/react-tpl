@@ -10,7 +10,7 @@ module.exports = {
       },
       // 首先: 打包node_modules中的文件
       vendor: {
-        name: 'vendor',
+        name: 'framework',
         test: /[\\/]node_modules[\\/]/,
         chunks: 'all',
         priority: 10

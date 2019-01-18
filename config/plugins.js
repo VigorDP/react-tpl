@@ -15,7 +15,6 @@ const plugins = [
     filename: resolve('dist/index.html')
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new ExtractTextPlugin('[name].[contenthash].css'),
   new CopyWebpackPlugin([{ context: 'src/assets', from: '**/*', to: 'assets' }])
 ];
 

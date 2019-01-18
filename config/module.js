@@ -19,19 +19,7 @@ module.exports = {
     },
     {
       test: /\.css$/,
-      use: [
-        'style-loader',
-        { loader: 'css-loader', options: { modules: true, importLoaders: 1 } },
-        {
-          loader: 'postcss-loader',
-          options: {
-            ident: 'postcss',
-            plugins: [
-              require('autoprefixer')({ browsers: ['last 2 versions'] })
-            ]
-          }
-        }
-      ],
+      use: ['style-loader', 'css-loader'],
       include: [resolve('src'), resolve('node_modules')]
     },
     {
@@ -39,6 +27,14 @@ module.exports = {
       use: [
         'style-loader',
         'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: [
+              require('autoprefixer')({ browsers: ['> 1%', 'last 2 versions'] })
+            ]
+          }
+        },
         'sass-loader'
       ],
       include: [resolve('src')]

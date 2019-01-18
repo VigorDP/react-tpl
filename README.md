@@ -23,3 +23,4 @@ npm run build
 - css-modules
 - ES6
 - axios
+- dayjs

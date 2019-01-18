@@ -6,6 +6,7 @@ module.exports = {
   devtool: 'source-map',
   entry: require('./entry'),
   output: require('./output'),
+  optimization: require('./optimization'),
   module: require('./module'),
   resolve: require('./resolve'),
   externals: require('./externals'),

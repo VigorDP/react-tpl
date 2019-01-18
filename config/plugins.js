@@ -20,6 +20,10 @@ const plugins = [
 ];
 
 process.env.NODE_ENV === 'production' &&
-  plugins.push(new BundleAnalyzerPlugin());
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    })
+  );
 
 module.exports = plugins;

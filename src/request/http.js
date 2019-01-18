@@ -52,8 +52,9 @@ axios.interceptors.response.use(
           window.location.hash = '#/login';
           break;
         default:
-          return Promise.reject(error);
+          break;
       }
+      return Promise.reject(error);
     } else {
       return Promise.reject(error);
     }

@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from 'styles/appLayout.scss';
 import leftLogo from 'assets/imgs/logo.png';
-import { Button } from 'antd';
+import getTipText from 'utils/getTipText';
+import { message } from 'antd';
 
 class AppLayout extends Component {
   constructor(props) {
@@ -19,10 +20,15 @@ class AppLayout extends Component {
   }
 
   componentDidMount() {
+    const { success, error } = getTipText({ path: 'login' });
     this.props
       .getUserInfo()
-      .then()
-      .catch(err => {});
+      .then(() => {
+        message.success(success);
+      })
+      .catch(err => {
+        message.success(error);
+      });
   }
 
   handleLogout() {
@@ -35,8 +41,6 @@ class AppLayout extends Component {
     const { match, history } = this.props;
     return (
       <div className={styles.appContainer}>
-        {/* <Toast /> */}
-        <Button type="primary">123</Button>
         <div className={styles.headerContainer}>
           <div className={styles.left}>
             <img src={leftLogo} />

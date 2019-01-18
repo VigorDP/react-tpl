@@ -4,7 +4,7 @@ import styles from 'styles/basicInfoPage.scss';
 import { connect } from 'react-redux';
 import { registerAction } from 'store/actions';
 import PropTypes from 'prop-types';
-
+import { Empty } from 'antd';
 class ConfigInfoPage extends PureComponent {
   getTableConfig(configs) {
     configs = configs || [{}];
@@ -18,12 +18,12 @@ class ConfigInfoPage extends PureComponent {
           title: '测试环境',
           content: [
             {
-              key: '企业 id',
+              key: 'Client id',
               value: clientID,
               canEditable: false
             },
             {
-              key: '企业 Secret',
+              key: 'Client secret',
               value: secret,
               canEditable: false
             },
@@ -40,12 +40,12 @@ class ConfigInfoPage extends PureComponent {
           title: '正式环境',
           content: [
             {
-              key: '企业 id',
+              key: 'Client id',
               value: clientID,
               canEditable: false
             },
             {
-              key: '企业 Secret',
+              key: 'Client secret',
               value: secret,
               canEditable: false
             },
@@ -65,7 +65,11 @@ class ConfigInfoPage extends PureComponent {
     const { testConfig, prodConfig } = this.getTableConfig(this.props.configs);
     const hasConfig = testConfig.title || prodConfig.title;
     if (!hasConfig) {
-      return <div className={styles.empty}>暂无配置</div>;
+      return (
+        <div className={styles.empty}>
+          <Empty />
+        </div>
+      );
     }
     return (
       <div className={styles.container}>

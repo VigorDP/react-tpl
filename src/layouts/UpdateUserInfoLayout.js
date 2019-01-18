@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { updateUserInfoAction } from 'store/actions';
 import PropTypes from 'prop-types';
 import logo from 'assets/imgs/logo.png';
-
+import queryString from 'query-string';
+import getTipText from 'utils/getTipText';
+import { message } from 'antd';
 class UpdateUserInfoLayout extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,15 @@ class UpdateUserInfoLayout extends Component {
 
     this.checkForm = this.checkForm.bind(this);
     this.handleFinish = this.handleFinish.bind(this);
+  }
+
+  componentDidMount() {
+    const from = queryString.parse(window.location.search).from;
+    // if (from === 'register') {
+    //   message.success(getTipText({ path: from }).success);
+    // } else {
+    //   this.props.history.replace('/login');
+    // }
   }
 
   showErrorText(result) {

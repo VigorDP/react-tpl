@@ -19,7 +19,7 @@ class Table extends React.Component {
   }
 
   addExpiredText(expiredTime) {
-    return dayjs().isAfter(dayjs(expiredTime)) ? '已过期' : '';
+    return dayjs().isAfter(dayjs(expiredTime)) ? '(已过期)' : '';
   }
 
   render() {
@@ -38,7 +38,7 @@ class Table extends React.Component {
           {title === '测试环境' && (
             <div className={styles.goToDemo}>
               <span className={styles.tip}>
-                请使用 Client id 和 Secret 在测试环境注册账号
+                请使用 Client id 和 Client secret 在测试环境注册账号
               </span>
               <a className={styles.button} href={getUrlByType('demo')}>
                 去体验 Demo
@@ -58,7 +58,7 @@ class Table extends React.Component {
                   : line.value}
                 <span className={styles.expiredText}>
                   {line.key === '有效期至'
-                    ? `(${this.addExpiredText(line.value)})`
+                    ? `${this.addExpiredText(line.value)}`
                     : ''}
                 </span>
               </div>

@@ -1,5 +1,5 @@
 import { LOGIN, REGISTER, GET_USER_INFO, RESET } from '../actionType';
-import { Record, Map } from 'immutable';
+import { Record } from 'immutable';
 import { handleActions } from 'redux-actions';
 // 语法：handleActions({actionCreator},initialState)
 
@@ -67,5 +67,5 @@ export default handleActions(
       return state;
     }
   },
-  Map(defaultUserInfo)
+  defaultUserInfo
 );

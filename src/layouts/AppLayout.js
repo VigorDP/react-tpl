@@ -27,7 +27,7 @@ class AppLayout extends Component {
         message.success(success);
       })
       .catch(err => {
-        message.success(error);
+        message.error(error);
       });
   }
 

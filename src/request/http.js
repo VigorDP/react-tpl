@@ -31,7 +31,6 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
   response => {
-    // 会执行两次
     if (response && (response.status === 200 || response.status === 201)) {
       return Promise.resolve(response);
     } else {

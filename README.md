@@ -1,4 +1,4 @@
-# SDK 企业后台官网
+# React 项目脚手架
 
 # 使用
 - 本地开发
@@ -18,8 +18,11 @@ npm run build
 - react-router-redux
 - redux-promise
 - redux-actions
+- react-router-last-location
+- antd
 - immutable.js
 - webpack v4
+- Sass
 - css-modules
 - ES6
 - axios

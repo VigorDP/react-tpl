@@ -13,11 +13,8 @@
   height: 100%;
   .header {
     height: $headerHeight;
-    width: $mainContentWidth;
-    margin: 0 auto;
-    background-color: $mainBg;
   }
-  .content {
+  .main {
     flex: 1;
   }
   .footer {

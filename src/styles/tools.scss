@@ -1,9 +1,9 @@
 /*****************  变量定义区  ****************/
 $headerHeight: 100px;
-$footerHeight: 290px;
+$footerHeight: 300px;
 $mainContentWidth: 1220px;
 $mainBg: #fff;
-$footerBg: #4a4a4a;
+$footerBg: rgba(179, 157, 128, 1);
 
 /*****************  工具类定义区  ****************/
 @mixin clear {
@@ -117,7 +117,6 @@ $footerBg: #4a4a4a;
   top: 50%;
   transform: translateY(-50%);
 }
-
 // 定位左右居中
 @mixin center-x {
   position: absolute;

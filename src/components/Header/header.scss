@@ -2,15 +2,67 @@
 
 .headerContainer {
   height: 100%;
-  background-color: green;
+  width: $mainContentWidth;
+  margin: 0 auto;
+  background-color: $mainBg;
   @include flex-sa;
   .logoContainer {
-    background-color: rgb(180, 209, 180);
-    min-width: 100px;
-    height: 100%;
+    @include flex-center;
     .logo {
-      width: 100px;
-      height: 100%;
+      width: 156px;
+      height: 36px;
+    }
+  }
+  .centerMenuContainer {
+    @include flex-sb;
+    // width: 650px;
+    .menuWrap {
+      width: 90px;
+      &:first-child {
+        width: 157px;
+      }
+      text-align: center;
+      height: $headerHeight;
+      line-height: $headerHeight;
+      a {
+        position: relative;
+        span {
+          font-size: 17px;
+          font-family: 'WenYue-GuDianMingChaoTi-NC';
+          &:hover {
+            font-weight: bold;
+            color: rgba(187, 157, 95, 1);
+          }
+        }
+        .dot {
+          position: absolute;
+          top: 10px;
+          width: 2px;
+          height: 2px;
+          margin-left: 27px;
+          border-radius: 50%;
+        }
+        &.selected {
+          span {
+            font-weight: bold;
+            color: rgba(187, 157, 95, 1);
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        .dot {
+          background: rgba(0, 0, 0, 1);
+        }
+      }
+    }
+  }
+  .rightMenuContainer {
+    @include flex-sb;
+    width: 100px;
+    a .itemImage {
+      width: 20px;
+      height: 20px;
     }
   }
 }

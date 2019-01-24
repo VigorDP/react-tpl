@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from 'containers/App';
-import Login from 'containers/Login';
 import store from 'store';
 import './styles/reset.scss';
+import P from 'utils/routePath';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/" component={App} />
+        <Route path={P.main} component={App} />
+        <Redirect to={P.main} />
       </Switch>
     </Router>
   </Provider>,

@@ -42,8 +42,8 @@ export class Footer extends PureComponent {
             {config.map(item => this._renderLinkItem(item))}
           </div>
           <div className={styles.bottom}>
-            Copyright © 2017 包功网.All Rights Reserved. 京ICP备15029980号-3
-            京公网安备 11011502002973号
+            <span>{`尚书工坊 @ ${new Date().getFullYear()}`}</span>
+            <span>邮箱：123456789@123.com / 电话 400-888-8888</span>
           </div>
         </div>
       </div>

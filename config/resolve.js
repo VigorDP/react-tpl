@@ -16,6 +16,7 @@ module.exports = {
     api: resolve('src/request/api'),
     components: resolve('src/components'),
     containers: resolve('src/containers'),
+    pages: resolve('src/containers/pages'),
     styles: resolve('src/styles'),
     utils: resolve('src/utils')
   }

@@ -23,16 +23,18 @@
           font-size: 25px;
           font-weight: bold;
           color: white;
+          @include fanti;
         }
         .detail {
           margin-top: 20px;
           font-size: 14px;
-          line-height: 1.8;
           color: #fffffe;
           a {
             color: #fffffe;
             display: inline-block;
             margin-right: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
             &.detail-a {
               display: block;
             }

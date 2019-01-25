@@ -4,13 +4,13 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import Screen1 from './pages/Screen1';
-import Screen2 from './pages/Screen2';
-import Screen3 from './pages/Screen3';
-import Screen4 from './pages/Screen4';
-import Screen5 from './pages/Screen5';
+import MainLayout from './layouts/MainLayout';
+import FurnitureLayout from './layouts/FurnitureLayout';
+import HouseLayout from './layouts/HouseLayout';
+import ServiceLayout from './layouts/ServiceLayout';
+import WeLayout from './layouts/WeLayout';
 
-import styles from 'styles/App.scss';
+import styles from 'styles/app.scss';
 import Images from 'utils/Image';
 import P from 'utils/routePath';
 
@@ -91,11 +91,11 @@ export default class App extends Component {
 
         <main className={styles.main}>
           <Switch>
-            <Route path={P.main} component={Screen1} exact={true} />
-            <Route path={P.furniture} component={Screen2} />
-            <Route path={P.house} component={Screen3} />
-            <Route path={P.service} component={Screen4} />
-            <Route path={P.we} component={Screen5} />
+            <Route path={P.main} component={MainLayout} />
+            <Route path={P.furniture} component={FurnitureLayout} />
+            <Route path={P.house} component={HouseLayout} />
+            <Route path={P.service} component={ServiceLayout} />
+            <Route path={P.we} component={WeLayout} />
             <Redirect to={P.main} />
           </Switch>
         </main>

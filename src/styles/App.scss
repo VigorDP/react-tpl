@@ -10,6 +10,7 @@
 
 .App {
   @include flexy;
+  background: url(../assets/imgs/mainBg.png) repeat center/cover;
   height: 100%;
   .header {
     height: $headerHeight;

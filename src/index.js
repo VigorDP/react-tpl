@@ -16,8 +16,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path={P.main} component={App} />
-        <Redirect to={P.main} />
+        <Route path={P.default} component={App} />
+        <Redirect to={P.default} />
       </Switch>
     </Router>
   </Provider>,

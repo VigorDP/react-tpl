@@ -4,7 +4,6 @@
   height: 100%;
   width: $mainContentWidth;
   margin: 0 auto;
-  background-color: $mainBg;
   @include flex-sa;
   .logoContainer {
     @include flex-center;

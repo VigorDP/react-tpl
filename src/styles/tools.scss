@@ -1,5 +1,6 @@
 /*****************  变量定义区  ****************/
 $headerHeight: 100px;
+$subMenuHeight: 68px;
 $footerHeight: 300px;
 $mainContentWidth: 1220px;
 $mainBg: #fff;
@@ -10,6 +11,10 @@ $footerBg: rgba(179, 157, 128, 1);
   content: '';
   display: block;
   clear: both;
+}
+
+@mixin fanti {
+  font-family: 'fanti';
 }
 
 @mixin s-hide {
@@ -24,6 +29,10 @@ $footerBg: rgba(179, 157, 128, 1);
   &:hover {
     cursor: pointer;
   }
+}
+
+@mixin flex {
+  display: flex;
 }
 
 @mixin flex-center {

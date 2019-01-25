@@ -33,7 +33,7 @@ module.exports = {
       include: [resolve('src')]
     },
     {
-      test: /\.(png|jpg|gif|eot|svg|ttf|woff|woff2)$/,
+      test: /\.(png|jpg|gif|eot|svg|otf|ttf|woff|woff2)$/,
       use: [
         {
           loader: 'url-loader',

@@ -8,9 +8,12 @@ import searchIcon from 'assets/imgs/search@2x.png';
 import bookIcon from 'assets/imgs/book@2x.png';
 import accountIcon from 'assets/imgs/account@2x.png';
 
+import mainSlide1 from 'assets/imgs/main_slide1@2x.png';
+
 export default {
   leftLogo,
   searchIcon,
   bookIcon,
-  accountIcon
+  accountIcon,
+  mainSlide1
 };

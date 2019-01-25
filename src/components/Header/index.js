@@ -14,7 +14,7 @@ export default class Header extends Component {
         <div className={styles.centerMenuContainer}>
           {centerMenu.map((item, index) => (
             <div className={styles.menuWrap} key={index}>
-              <NavLink activeClassName={styles.selected} to={item.path} exact>
+              <NavLink activeClassName={styles.selected} to={item.path}>
                 <span>{item.text}</span>
                 <span className={styles.dot} />
               </NavLink>

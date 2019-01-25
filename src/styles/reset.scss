@@ -92,4 +92,12 @@ body {
   user-select: none; //禁止用户选择文本
   -webkit-touch-callout: none; //禁止图片长按弹出菜单，img和a标签都要加(对图片似乎已经无效了，长安图片总是会弹出系统菜单)
   -webkit-appearance: none; // 禁用系统原生样式
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@font-face {
+  font-family: 'fanti';
+  src: url(../assets/fonts/WenYue-GuDianMingChaoTi-NC_0.otf);
 }

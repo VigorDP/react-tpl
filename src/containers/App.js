@@ -74,7 +74,7 @@ const footerConfig = [
   {
     type: 'image',
     title: '官方微信公众号',
-    detail: Images.leftLogo
+    detail: Images.logo
   }
 ];
 export default class App extends Component {
@@ -83,7 +83,7 @@ export default class App extends Component {
       <div className={styles.App}>
         <header className={styles.header}>
           <Header
-            leftLogo={Images.leftLogo}
+            logo={Images.logo}
             centerMenu={centerMenu}
             rightMenu={rightMenu}
           />

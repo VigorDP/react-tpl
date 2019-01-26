@@ -1,0 +1,10 @@
+@import 'styles/tools.scss';
+
+.layout {
+  width: 100%;
+  @include flex-center;
+  .logo {
+    width: 20px;
+    height: 50px;
+  }
+}

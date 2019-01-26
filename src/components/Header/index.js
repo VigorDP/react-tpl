@@ -5,11 +5,11 @@ import styles from './header.scss';
 
 export default class Header extends Component {
   render() {
-    const { leftLogo, centerMenu, rightMenu } = this.props;
+    const { logo, centerMenu, rightMenu } = this.props;
     return (
       <div className={styles.headerContainer}>
         <div className={styles.logoContainer}>
-          <img src={leftLogo} className={styles.logo} />
+          <img src={logo} className={styles.logo} />
         </div>
         <div className={styles.centerMenuContainer}>
           {centerMenu.map((item, index) => (
@@ -34,7 +34,7 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-  leftLogo: PropTypes.string,
+  logo: PropTypes.string,
   centerMenu: PropTypes.array,
   rightMenu: PropTypes.array
 };

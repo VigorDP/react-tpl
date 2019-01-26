@@ -2,18 +2,22 @@
  * 图片资源管理
  */
 
-import leftLogo from 'assets/imgs/logo@2x.png';
+import logo from 'assets/imgs/logo@2x.png';
+import smallLogo from 'assets/imgs/smallLogo.png';
 
 import searchIcon from 'assets/imgs/search@2x.png';
 import bookIcon from 'assets/imgs/book@2x.png';
 import accountIcon from 'assets/imgs/account@2x.png';
 
 import mainSlide1 from 'assets/imgs/main_slide1@2x.png';
+import girl from 'assets/imgs/girl.png';
 
 export default {
-  leftLogo,
+  logo,
   searchIcon,
   bookIcon,
   accountIcon,
-  mainSlide1
+  mainSlide1,
+  smallLogo,
+  girl
 };

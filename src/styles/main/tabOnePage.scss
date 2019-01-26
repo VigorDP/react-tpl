@@ -1,26 +1,36 @@
 @import '../tools.scss';
 
 .mainLayout {
+  width: 100%;
   .slideItem {
-    width: 100%;
     height: 578px;
     background: url(../../assets/imgs/main_slide2.png) no-repeat center/cover;
     background-color: green;
     font-size: 0;
-    img {
-      width: 100%;
-      height: 578px;
-    }
   }
   .yishu {
     width: 100%;
-    min-width: 1366px;
     @include flex-center;
     .yishuContainer {
       width: 1100px;
-      height: 700px;
-      margin: 0 auto;
-      background-color: red;
+      min-height: 700px;
+      .bottom {
+        .commonLine {
+          @include flex-sb;
+          margin-bottom: 110px;
+          .itemLayout {
+            @include flex-center;
+            @include flexy;
+            .seperator {
+              margin: 10px 0;
+            }
+            .name {
+              font-size: 17px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
     }
   }
 }

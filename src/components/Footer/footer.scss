@@ -2,6 +2,7 @@
 
 .footer {
   width: 100%;
+  min-width: $mainContentWidth;
   padding: 0 100px;
   height: $footerHeight;
   background: $footerBg;

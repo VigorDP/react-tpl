@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import styles from 'styles/mainLayout.scss';
 import P from 'utils/routePath';
 import SubMenu from 'components/SubMenu';
 import tabOnePage from 'pages/main/tabOnePage';
@@ -18,9 +17,9 @@ const menuConfig = [
 export default class Home extends PureComponent {
   render() {
     return (
-      <div className={styles.mainLayout}>
+      <div>
         <SubMenu config={menuConfig} style={{ paddingLeft: 100 }} />
-        <main className={styles.main}>
+        <main>
           <Switch>
             <Route path={P.mainTab1} component={tabOnePage} />
             <Route path={P.mainTab2} component={tabTwoPage} />

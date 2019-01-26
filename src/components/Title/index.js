@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 export default class Title extends PureComponent {
   render() {
     const {
-      config: { pinyin, hanzi }
+      config: { pinyin, hanzi },
+      style
     } = this.props;
     return (
       <div className={styles.layout}>
-        <div className={`${styles.pinyin} ${styles.text}`}>
+        <div className={styles.text} style={style}>
           {pinyin.map((item, index) => (
             <span
               key={index}
@@ -19,7 +20,7 @@ export default class Title extends PureComponent {
             </span>
           ))}
         </div>
-        <div className={`${styles.hanzi} ${styles.text}`}>
+        <div className={`${styles.hanzi} ${styles.text}`} style={style}>
           {hanzi.map((item, index) => <span key={index}>{item}</span>)}
         </div>
       </div>

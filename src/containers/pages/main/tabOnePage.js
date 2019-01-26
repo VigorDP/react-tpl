@@ -53,7 +53,7 @@ export default class Home extends PureComponent {
         </AutoPlaySwiper>
         <section className={styles.yishu}>
           <div className={styles.yishuContainer}>
-            <Title config={titleConfig} />
+            <Title config={titleConfig} style={{ width: '160px' }} />
             <Seal style={{ marginTop: '40px', marginBottom: '132px' }} />
             <div className={styles.bottom}>
               <div className={styles.commonLine}>

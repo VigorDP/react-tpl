@@ -1,0 +1,16 @@
+@import 'styles/tools.scss';
+
+.bottom {
+  p {
+    width: 1100px;
+    margin: 0 auto;
+    font-size: 21px;
+    font-family: FangSong;
+    line-height: 1.8;
+    font-weight: bold;
+    text-align: center;
+    &:last-child {
+      margin: 50px 0;
+    }
+  }
+}

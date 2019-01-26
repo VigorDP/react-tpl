@@ -7,7 +7,7 @@
   .text {
     @include flex-sb;
     margin-bottom: 13px;
-    width: 160px;
+    min-width: 160px;
     span {
       flex: 1;
       text-align: center;

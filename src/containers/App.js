@@ -10,7 +10,7 @@ import HouseLayout from './layouts/HouseLayout';
 import ServiceLayout from './layouts/ServiceLayout';
 import WeLayout from './layouts/WeLayout';
 
-import styles from 'styles/app.scss';
+import styles from 'styles/index.scss';
 import Images from 'utils/Image';
 import P from 'utils/routePath';
 

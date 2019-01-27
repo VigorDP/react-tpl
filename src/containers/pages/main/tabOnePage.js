@@ -7,10 +7,12 @@ import Title from 'components/Title';
 import Seal from 'components/Seal';
 
 const AutoPlaySwiper = autoPlay(Swiper);
+
 const titleConfig = {
   pinyin: ['yi', 'shu', 'he', 'zuo'],
   hanzi: ['艺', '术', '合', '作']
 };
+
 const designer = [
   {
     img: Images.girl,

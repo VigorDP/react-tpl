@@ -4,7 +4,7 @@ $subMenuHeight: 68px;
 $footerHeight: 300px;
 $mainContentWidth: 1366px;
 $mainBg: #fff;
-$footerBg: rgba(179, 157, 128, 1);
+$activeBg: rgba(179, 157, 128, 1);
 
 /*****************  工具类定义区  ****************/
 @mixin clear {
@@ -15,20 +15,6 @@ $footerBg: rgba(179, 157, 128, 1);
 
 @mixin fanti {
   font-family: 'fanti';
-}
-
-@mixin s-hide {
-  display: none;
-}
-
-@mixin s-show {
-  display: block;
-}
-
-@mixin s-hover {
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 @mixin flex {
@@ -135,8 +121,8 @@ $footerBg: rgba(179, 157, 128, 1);
 
 // 宽高
 @mixin wh($width, $height) {
-  width: $width;
-  height: $height;
+  width: #{$width}px;
+  height: #{$height}px;
 }
 // 字体大小、行高、字体
 @mixin font($size, $line-height, $family: 'Microsoft YaHei') {

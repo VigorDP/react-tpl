@@ -3,11 +3,120 @@ import styles from 'styles/main/tabTwoPage.scss';
 import Images from 'utils/Image';
 import Title from 'components/Title';
 import Seal from 'components/Seal';
+import Feature from 'components/Feature';
+import P from 'utils/routePath';
 
 const titleConfig = {
   pinyin: ['ming', 'shi', 'jia', 'ju', 'shi', 'liu', 'pin'],
   hanzi: ['明', '式', '家', '具', '十', '六', '品']
 };
+
+const featureConfig = [
+  {
+    tag: ['壹', '简练'],
+    img: Images.featureOne,
+    description: `
+          这种塌北京匠师通称罗汉床，由于只容一人，故又有
+      “独睡”之称。床用三块光素的独板做围子，只后背一块
+      拼了一窄条，这是因为紫檀很难得到比此更宽的大料的缘
+      故。床身无束腰，大边及抹头，线脚简单，用素冰盘沿，
+      只压边线一道。腿子为四根粗大圆材，直落到地。四面施
+      裹腿罗锅枨加矮老。此床从结构到装饰都采用了极为简练
+      的造法，每个构件交代得干净利落，功能明确。
+      `,
+    path: P.main
+  },
+  {
+    tag: ['贰', '淳朴'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['叁', '厚拙'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['肆', '凝重'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['伍', '雄伟'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['陆', '圆浑'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['柒', '沉穆'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['捌', '浓华'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['玖', '文绮'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['拾', '妍秀'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['拾壹', '劲挺'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['拾贰', '柔婉'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['拾叁', '空灵'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['拾肆', '玲珑'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['拾伍', '典雅'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  },
+  {
+    tag: ['拾陆', '清新'],
+    img: Images.featureOne,
+    description: ``,
+    path: P.main
+  }
+];
 
 export default class Home extends PureComponent {
   renderListItem(item, index) {
@@ -41,6 +150,7 @@ export default class Home extends PureComponent {
               </p>
               <p>王世襄先生提出的家具十六品是：</p>
             </div>
+            <Feature config={featureConfig} style={{ marginBottom: '120px' }} />
           </div>
         </section>
       </div>

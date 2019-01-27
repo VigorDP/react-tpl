@@ -12,6 +12,8 @@ import accountIcon from 'assets/imgs/account@2x.png';
 import mainSlide1 from 'assets/imgs/main_slide1@2x.png';
 import girl from 'assets/imgs/girl.png';
 
+import featureOne from 'assets/imgs/one_furn.png';
+
 export default {
   logo,
   searchIcon,
@@ -19,5 +21,6 @@ export default {
   accountIcon,
   mainSlide1,
   smallLogo,
-  girl
+  girl,
+  featureOne
 };

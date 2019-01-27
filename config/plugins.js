@@ -12,7 +12,8 @@ module.exports = [
   }),
   new HtmlWebpackPlugin({
     template: resolve('src/index.html'),
-    filename: resolve('dist/index.html')
+    filename: resolve('dist/index.html'),
+    favicon: resolve('src/assets/imgs/favicon.ico')
   }),
   new webpack.HotModuleReplacementPlugin(),
   new ExtractTextPlugin('[name].[contenthash].css'),

@@ -5,7 +5,7 @@ import styles from './header.scss';
 
 export default class Header extends Component {
   render() {
-    const { logo, centerMenu, rightMenu } = this.props;
+    const { logo, centerMenu = [], rightMenu = [] } = this.props;
     return (
       <div className={styles.headerContainer}>
         <div className={styles.logoContainer}>

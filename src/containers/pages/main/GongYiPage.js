@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from 'styles/main/tabTwoPage.scss';
+import styles from 'styles/main/XinTaiPage.scss';
 import Images from 'utils/Image';
 import Title from 'components/Title';
 import Seal from 'components/Seal';
@@ -24,7 +24,7 @@ const paragraphConfig = [
   '其特点是在物件上不使用钉子，利用卯榫加固物件，体现出中国古老的文化和智慧。'
 ];
 
-export default class Home extends PureComponent {
+export default class GongYiPage extends PureComponent {
   render() {
     return (
       <div>

@@ -6,10 +6,10 @@ import P from 'utils/routePath';
 import SubMenu from 'components/SubMenu';
 
 const menuConfig = [
-  { text: '意境美', path: P.mainTab1 },
-  { text: '形态美', path: P.mainTab2 },
-  { text: '工艺美', path: P.mainTab3 },
-  { text: '材质美', path: P.mainTab4 }
+  { text: '意境美', path: P.main_caizhi },
+  { text: '形态美', path: P.main_xintai },
+  { text: '工艺美', path: P.main_gongyi },
+  { text: '材质美', path: P.main_yijin }
 ];
 
 export default class Home extends PureComponent {

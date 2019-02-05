@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from 'styles/main/tabTwoPage.scss';
+import styles from 'styles/main/XinTaiPage.scss';
 import Images from 'utils/Image';
 import Title from 'components/Title';
 import Seal from 'components/Seal';
@@ -128,7 +128,7 @@ const paragraphConfig = [
 ];
 
 const lastParagraph = ['王世襄先生提出的家具十六品是：'];
-export default class Home extends PureComponent {
+export default class XinTaiPage extends PureComponent {
   render() {
     return (
       <div>

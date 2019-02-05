@@ -2,10 +2,10 @@ const routeMap = {
   default: '/',
 
   main: '/main',
-  mainTab1: '/main/tabOne',
-  mainTab2: '/main/tabTwo',
-  mainTab3: '/main/tabThree',
-  mainTab4: '/main/tabFour',
+  main_yijin: '/main/yiJin',
+  main_xintai: '/main/xinTai',
+  main_gongyi: '/main/gongYi',
+  main_caizhi: '/main/caiZhi',
 
   furniture: '/furniture',
   house: '/house',

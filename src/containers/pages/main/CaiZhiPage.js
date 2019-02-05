@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import styles from 'styles/main/tabFourPage.scss';
+import styles from 'styles/main/CaiZhiPage.scss';
 import Images from 'utils/Image';
 
-export default class Home extends PureComponent {
+export default class CaiZhiPage extends PureComponent {
   render() {
     return (
       <div className={styles.mainLayout}>

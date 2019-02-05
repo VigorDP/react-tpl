@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from 'styles/main/tabOnePage.scss';
+import styles from 'styles/main/YiJinPage.scss';
 import Images from 'utils/Image';
 import Swiper from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
@@ -35,7 +35,7 @@ const designer = [
     name: '设计师 阿茶'
   }
 ];
-export default class Home extends PureComponent {
+export default class YiJinPage extends PureComponent {
   renderListItem(item, index) {
     return (
       <div key={index} className={styles.itemLayout}>

@@ -17,6 +17,6 @@ module.exports = [
   }),
   new webpack.HotModuleReplacementPlugin(),
   new ExtractTextPlugin('[name].[contenthash].css'),
-  new CompressionPlugin(),
+  // new CompressionPlugin(),
   () => process.env.NODE_ENV === 'production' && new BundleAnalyzerPlugin()
 ];

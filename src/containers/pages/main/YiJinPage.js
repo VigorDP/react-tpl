@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styles from 'styles/main/YiJinPage.scss';
-import Images from 'utils/Image';
+import Images from 'utils/image';
 import Swiper from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import Title from 'components/Title';

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styles from 'styles/main/XinTaiPage.scss';
-import Images from 'utils/Image';
+import Images from 'utils/image';
 import Title from 'components/Title';
 import Seal from 'components/Seal';
 import Paragraph from 'components/Paragraph';

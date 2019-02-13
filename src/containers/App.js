@@ -11,7 +11,7 @@ import ServiceLayout from './layouts/ServiceLayout';
 import WeLayout from './layouts/WeLayout';
 
 import styles from 'styles/index.scss';
-import Images from 'utils/Image';
+import Images from 'utils/image';
 import P from 'utils/routePath';
 
 const centerMenu = [

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styles from 'styles/main/XinTaiPage.scss';
-import Images from 'utils/Image';
+import Images from 'utils/image';
 import Title from 'components/Title';
 import Seal from 'components/Seal';
 import Feature from 'components/Feature';
@@ -26,7 +26,7 @@ const featureConfig = [
       裹腿罗锅枨加矮老。此床从结构到装饰都采用了极为简练
       的造法，每个构件交代得干净利落，功能明确。
       `,
-    path: P.main
+    path: `${P.main_xintai}/more/1`
   },
   {
     tag: ['贰', '淳朴'],

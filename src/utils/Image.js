@@ -14,6 +14,7 @@ import girl from 'assets/imgs/girl.png';
 
 import featureOne from 'assets/imgs/one_furn.png';
 
+import backIcon from 'assets/imgs/book@2x.png';
 export default {
   logo,
   searchIcon,
@@ -22,5 +23,6 @@ export default {
   mainSlide1,
   smallLogo,
   girl,
-  featureOne
+  featureOne,
+  backIcon
 };

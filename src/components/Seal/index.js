@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styles from './seal.scss';
 import PropTypes from 'prop-types';
-import Images from 'utils/Image';
+import Images from 'utils/image';
 
 export default class Seal extends PureComponent {
   render() {

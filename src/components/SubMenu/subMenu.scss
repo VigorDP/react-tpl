@@ -7,8 +7,6 @@
   line-height: $subMenuHeight;
   background: $activeBg;
   .subMenuWrap {
-    width: 80%;
-    margin: 0 auto;
     @include flex;
     a {
       margin-right: 60px;
@@ -28,6 +26,17 @@
           margin-right: 0px;
           margin-left: 10px;
         }
+      }
+    }
+    img {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
+    }
+    .colorWhite {
+      color: white;
+      &:hover {
+        cursor: pointer;
       }
     }
   }

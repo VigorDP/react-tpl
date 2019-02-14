@@ -5,6 +5,7 @@ import SubMenu from 'components/SubMenu';
 import YiJinPage from 'pages/main/YiJinPage';
 import XinTaiPage from 'pages/main/XinTaiPage';
 import XinTaiMorePage from 'pages/main/XinTaiMorePage';
+import XinTaiMoreDetailPage from 'pages/main/XinTaiMoreDetailPage';
 
 import GongYiPage from 'pages/main/GongYiPage';
 import CaiZhiPage from 'pages/main/CaiZhiPage';
@@ -40,7 +41,12 @@ export default class Home extends PureComponent {
           <Switch>
             <Route path={P.main_yijin} component={YiJinPage} />
             <Route path={P.main_xintai} component={XinTaiPage} exact />
-            <Route path={P.main_xintai_more} component={XinTaiMorePage} />
+            <Route path={P.main_xintai_more} component={XinTaiMorePage} exact />
+            <Route
+              path={P.main_xintai_more_detail}
+              component={XinTaiMoreDetailPage}
+              exact
+            />
             <Route path={P.main_gongyi} component={GongYiPage} />
             <Route path={P.main_caizhi} component={CaiZhiPage} />
             <Redirect to={P.main_yijin} />

@@ -1,22 +1,23 @@
 import React, { PureComponent } from 'react';
-import styles from 'styles/main/XinTaiMorePage.scss';
+import styles from 'styles/main/XinTaiMoreDetailPage.scss';
 import SubMenu from 'components/SubMenu';
 import NavButton from 'components/NavButton';
-import { xinTaiMorePageConfig as content } from 'utils/content';
+import { xinTaiMoreDetailPageConfig as content } from 'utils/content';
 import Title from 'components/Title';
 import Seal from 'components/Seal';
 import Paragraph from 'components/Paragraph';
 
-export default class XinTaiMorePage extends PureComponent {
+export default class XinTaiMoreDetailPage extends PureComponent {
   constructor(props) {
     super(props);
     this.config = content[props.match.params.id];
+    console.log(this.config);
   }
   render() {
     return (
       <div className={styles.mainLayout}>
         <SubMenu.Back
-          title="返回形态美"
+          title="返回十六品详情"
           style={{
             color: 'white',
             letterSpacing: '2px',
@@ -26,7 +27,7 @@ export default class XinTaiMorePage extends PureComponent {
         />
 
         <section className={styles.yishu}>
-          <Title config={this.config.title} style={{ width: '273px' }} />
+          {/* <Title config={this.config.title} style={{ width: '273px' }} />
           <Paragraph config={this.config.subTitle} />
           <Seal style={{ marginTop: '40px', marginBottom: '100px' }} />
           <Paragraph config={this.config.description} />
@@ -48,7 +49,7 @@ export default class XinTaiMorePage extends PureComponent {
                 <NavButton path={item.path} style={{ marginTop: '20px' }} />
               </div>
             </div>
-          ))}
+          ))} */}
         </section>
       </div>
     );

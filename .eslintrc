@@ -67,7 +67,7 @@
     "react/jsx-wrap-multilines": 1,
     "react/prop-types": [
       2,
-      { "ignore": ["children", "navigation", "history"] }
+      { "ignore": ["children", "navigation", "history", "match", "location"] }
     ],
     "jsx-quotes": 1,
     "prettier/prettier": "error"

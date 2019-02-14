@@ -8,7 +8,7 @@ export default class Paragraph extends PureComponent {
     return (
       <div className={styles.layout} style={style}>
         {config.map((item, index) => (
-          <p className={styles.paragraph} key={index}>
+          <p className={styles.paragraph} key={index} style={style}>
             {item}
           </p>
         ))}

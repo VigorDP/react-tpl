@@ -1,1 +1,33 @@
 @import 'styles/tools.scss';
+.itemLayout {
+  margin: 150px auto;
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  &.reverse {
+    flex-direction: row-reverse;
+    .rightDesc {
+      margin-right: 60px;
+      margin-left: 0;
+    }
+  }
+  .leftPic {
+    width: 355px;
+    height: 393px;
+  }
+  .rightDesc {
+    display: flex;
+    height: 393px;
+    margin-left: 60px;
+    flex-direction: column;
+    justify-content: flex-start;
+    h3 {
+      margin: 0;
+      font-size: 32px;
+      color: rgba(175, 154, 123, 1);
+      font-weight: bold;
+      font-size: fanti;
+      margin-bottom: 31px;
+    }
+  }
+}

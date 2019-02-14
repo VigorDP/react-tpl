@@ -1,0 +1,15 @@
+@import 'styles/tools.scss';
+
+.layout {
+  width: 96px;
+  height: 32px;
+  border: 1px solid rgba(185, 13, 36, 1);
+  border-radius: 16px;
+  font-size: 18px;
+  font-family: fanti;
+  font-weight: bold;
+  a {
+    color: rgba(186, 18, 41, 1);
+  }
+  @include flex-center;
+}

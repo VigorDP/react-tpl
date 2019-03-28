@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react';
-import styles from 'styles/main/XinTaiPage.scss';
-import Images from 'utils/image';
-import Title from 'components/Title';
-import Seal from 'components/Seal';
-import Feature from 'components/Feature';
-import Paragraph from 'components/Paragraph';
+import React, { PureComponent } from 'react'
+import styles from 'styles/main/XinTaiPage.scss'
+import Images from 'utils/image'
+import Title from 'components/Title'
+import Seal from 'components/Seal'
+import Feature from 'components/Feature'
+import Paragraph from 'components/Paragraph'
 
-import P from 'utils/routePath';
+import P from 'utils/routePath'
 
 const titleConfig = {
   pinyin: ['ming', 'shi', 'jia', 'ju', 'shi', 'liu', 'pin'],
   hanzi: ['明', '式', '家', '具', '十', '六', '品']
-};
+}
 
 const featureConfig = [
   {
@@ -118,16 +118,16 @@ const featureConfig = [
     description: ``,
     path: P.main
   }
-];
+]
 
 const paragraphConfig = [
   '中式家具，能流传下来实物，并得到世界家具界推崇的就是明式家具，现代我国家流行的新古典主义家具也',
   '多多少少是在明式家具基础上发展出来，这些家具保留了明式家具娟秀的姿态，',
   '我们转载明式家具研究专家王世襄先生对明式家具的品鉴，以提高大家中式家具的审美观，',
   '以方便大家在购买家具是应该从哪些方面挑选，这里说的仅仅是款式。'
-];
+]
 
-const lastParagraph = ['王世襄先生提出的家具十六品是：'];
+const lastParagraph = ['王世襄先生提出的家具十六品是：']
 export default class XinTaiPage extends PureComponent {
   render() {
     return (
@@ -142,6 +142,6 @@ export default class XinTaiPage extends PureComponent {
           </div>
         </section>
       </div>
-    );
+    )
   }
 }

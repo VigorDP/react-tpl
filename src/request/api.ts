@@ -1,4 +1,4 @@
-import { get, post } from './http.js'
+import { get, post } from './http'
 import { loadJoke } from 'store/actions'
 
 const loadJokeList = ({

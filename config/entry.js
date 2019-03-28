@@ -1,3 +1,3 @@
 module.exports = {
-  app: './src/index.js'
+  app: './src/index.tsx'
 }

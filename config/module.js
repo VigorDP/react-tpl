@@ -1,7 +1,11 @@
-const resolve = require('path').resolve;
+const resolve = require('path').resolve
 
 module.exports = {
   rules: [
+    { test: /\.(ts|tsx)?$/, loader: 'awesome-typescript-loader' },
+
+    // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+    { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
     {
       test: /\.(js|jsx)$/,
       use: ['babel-loader'],
@@ -53,4 +57,4 @@ module.exports = {
       ]
     }
   ]
-};
+}

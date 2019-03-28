@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react';
-import styles from 'styles/main/XinTaiMoreDetailPage.scss';
-import SubMenu from 'components/SubMenu';
-import NavButton from 'components/NavButton';
-import { xinTaiMoreDetailPageConfig as content } from 'utils/content';
-import Title from 'components/Title';
-import Seal from 'components/Seal';
-import Paragraph from 'components/Paragraph';
+import React, { PureComponent } from 'react'
+import styles from 'styles/main/XinTaiMoreDetailPage.scss'
+import SubMenu from 'components/SubMenu'
+import NavButton from 'components/NavButton'
+import { xinTaiMoreDetailPageConfig as content } from 'utils/content'
+import Title from 'components/Title'
+import Seal from 'components/Seal'
+import Paragraph from 'components/Paragraph'
 
 export default class XinTaiMoreDetailPage extends PureComponent {
   constructor(props) {
-    super(props);
-    this.config = content[props.match.params.id];
-    console.log(this.config);
+    super(props)
+    this.config = content[props.match.params.id]
+    console.log(this.config)
   }
   render() {
     return (
@@ -52,6 +52,6 @@ export default class XinTaiMoreDetailPage extends PureComponent {
           ))} */}
         </section>
       </div>
-    );
+    )
   }
 }

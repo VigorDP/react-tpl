@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react';
-import styles from 'styles/main/YiJinPage.scss';
-import Images from 'utils/image';
-import Swiper from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
-import Title from 'components/Title';
-import Seal from 'components/Seal';
+import React, { PureComponent } from 'react'
+import styles from 'styles/main/YiJinPage.scss'
+import Images from 'utils/image'
+import Swiper from 'react-swipeable-views'
+import { autoPlay } from 'react-swipeable-views-utils'
+import Title from 'components/Title'
+import Seal from 'components/Seal'
 
-const AutoPlaySwiper = autoPlay(Swiper);
+const AutoPlaySwiper = autoPlay(Swiper)
 
 const titleConfig = {
   pinyin: ['yi', 'shu', 'he', 'zuo'],
   hanzi: ['艺', '术', '合', '作']
-};
+}
 
 const designer = [
   {
@@ -34,7 +34,7 @@ const designer = [
     img: Images.girl,
     name: '设计师 阿茶'
   }
-];
+]
 export default class YiJinPage extends PureComponent {
   renderListItem(item, index) {
     return (
@@ -43,7 +43,7 @@ export default class YiJinPage extends PureComponent {
         <div className={styles.seperator}>/</div>
         <div className={styles.name}>{item.name}</div>
       </div>
-    );
+    )
   }
   render() {
     return (
@@ -72,6 +72,6 @@ export default class YiJinPage extends PureComponent {
           </div>
         </section>
       </div>
-    );
+    )
   }
 }

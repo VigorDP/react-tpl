@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import styles from 'styles/main/CaiZhiPage.scss';
-import Images from 'utils/image';
+import React, { PureComponent } from 'react'
+import styles from 'styles/main/CaiZhiPage.scss'
+import Images from 'utils/image'
 
 export default class CaiZhiPage extends PureComponent {
   render() {
@@ -17,6 +17,6 @@ export default class CaiZhiPage extends PureComponent {
           </div>
         </section>
       </div>
-    );
+    )
   }
 }

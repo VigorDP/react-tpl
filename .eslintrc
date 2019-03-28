@@ -1,5 +1,5 @@
 {
-  "plugins": ["react", "prettier"],
+  "plugins": ["typescript", "react", "prettier"],
   "globals": {
     "__DEV__": true,
     "__dirname": false,
@@ -30,10 +30,19 @@
     "XMLHttpRequest": false,
     "alert": true,
     "pit": false,
-    "ReactElement": true
+    "ReactElement": true,
+    "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__": true
   },
 
-  "parser": "babel-eslint",
+  "parser": "typescript-eslint-parser",
+
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
 
   "env": {
     "es6": true
@@ -57,7 +66,9 @@
     "react/no-did-update-set-state": 1,
     "react/no-direct-mutation-state": 1,
     "react/no-is-mounted": 1,
-    "react/no-multi-comp": [1, { "ignoreStateless": true }],
+    "react/no-multi-comp": [1, {
+      "ignoreStateless": true
+    }],
     "react/no-set-state": 0,
     "react/no-unknown-property": 1,
     "react/prefer-es6-class": 1,
@@ -67,9 +78,12 @@
     "react/jsx-wrap-multilines": 1,
     "react/prop-types": [
       2,
-      { "ignore": ["children", "navigation", "history", "match", "location"] }
+      {
+        "ignore": ["children", "navigation", "history", "match", "location"]
+      }
     ],
     "jsx-quotes": 1,
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "typescript/class-name-casing": "error"
   }
 }

@@ -1,5 +1,5 @@
-import P from 'utils/routePath.js';
-import Images from 'utils/image.js';
+import P from 'utils/routePath';
+import Images from 'utils/image';
 
 const xinTaiMorePageConfig = {
   1: {

@@ -6,13 +6,18 @@ import { xinTaiMoreDetailPageConfig as content } from 'utils/content'
 import Title from 'components/Title'
 import Seal from 'components/Seal'
 import Paragraph from 'components/Paragraph'
+import { RouteComponentProps } from 'react-router-dom'
 
-export default class XinTaiMoreDetailPage extends PureComponent {
-  constructor(props) {
+interface IProps extends RouteComponentProps {}
+
+export default class XinTaiMoreDetailPage extends PureComponent<IProps, {}> {
+  constructor(props: IProps) {
     super(props)
     this.config = content[props.match.params.id]
     console.log(this.config)
   }
+  config: any
+
   render() {
     return (
       <div className={styles.mainLayout}>

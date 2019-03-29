@@ -2,6 +2,6 @@ import React, { PureComponent } from 'react'
 
 export default class Home extends PureComponent {
   render() {
-    return <div> Page 4</div>
+    return <div> Page 5 </div>
   }
 }

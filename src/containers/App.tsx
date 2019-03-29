@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
-import MainLayout from './layouts/MainLayout';
-import FurnitureLayout from './layouts/FurnitureLayout';
-import HouseLayout from './layouts/HouseLayout';
-import ServiceLayout from './layouts/ServiceLayout';
-import WeLayout from './layouts/WeLayout';
+import MainLayout from './layouts/MainLayout'
+import FurnitureLayout from './layouts/FurnitureLayout'
+import HouseLayout from './layouts/HouseLayout'
+import ServiceLayout from './layouts/ServiceLayout'
+import WeLayout from './layouts/WeLayout'
 
-import styles from 'styles/index.scss';
-import Images from 'utils/image';
-import P from 'utils/routePath';
+import styles from 'styles/index.scss'
+import Images from 'utils/image'
+import P from 'utils/routePath'
 
 const centerMenu = [
   { text: '明式家具之美', path: P.main },
@@ -20,13 +20,13 @@ const centerMenu = [
   { text: '家居', path: P.house },
   { text: '服务', path: P.service },
   { text: '我们', path: P.we }
-];
+]
 
 const rightMenu = [
   { url: Images.searchIcon, path: P.search },
   { url: Images.bookIcon, path: P.hope },
   { url: Images.accountIcon, path: P.account }
-];
+]
 
 const footerConfig = [
   {
@@ -76,7 +76,8 @@ const footerConfig = [
     title: '官方微信公众号',
     detail: Images.logo
   }
-];
+]
+
 export default class App extends Component {
   render() {
     return (
@@ -104,6 +105,6 @@ export default class App extends Component {
           <Footer config={footerConfig} />
         </footer>
       </div>
-    );
+    )
   }
 }

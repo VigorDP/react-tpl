@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react'
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom'
-import styles from 'styles/mainLayout.scss'
-import Images from 'utils/image'
 import P from 'utils/routePath'
 import SubMenu from 'components/SubMenu'
 

@@ -16,6 +16,6 @@ const routeMap = {
   search: '/search',
   hope: '/hope',
   account: '/account'
-};
+}
 
-export default routeMap;
+export default routeMap

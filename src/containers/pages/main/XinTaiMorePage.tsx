@@ -12,6 +12,7 @@ export default class XinTaiMorePage extends PureComponent {
     super(props)
     this.config = content[props.match.params.id]
   }
+  config: any
   render() {
     return (
       <div className={styles.mainLayout}>

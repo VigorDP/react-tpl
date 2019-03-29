@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect, RouteComponentProps } from 'react-router-dom'
 import P from 'utils/routePath'
 import SubMenu from 'components/SubMenu'
 import YiJinPage from 'containers/pages/main/YiJinPage'
@@ -19,7 +19,7 @@ const menuConfig = [
 
 export default class Home extends PureComponent {
   get canShowSubMenu() {
-    const { pathname } = this.props.history.location
+    const { pathname } = (this.props as RouteComponentProps).history.location
     const showSubMenuPathArray = [
       P.main_yijin,
       P.main_xintai,

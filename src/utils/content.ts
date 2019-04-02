@@ -1,7 +1,11 @@
-import P from 'utils/routePath';
-import Images from 'utils/image';
+import P from 'utils/routePath'
+import Images from 'utils/image'
+import {
+  IXinTaiMorePageConfig,
+  IXinTaiMoreDetailPageConfig
+} from 'schemas/content'
 
-const xinTaiMorePageConfig = {
+const xinTaiMorePageConfig: IXinTaiMorePageConfig = {
   1: {
     title: {
       pinyin: ['yi', 'jian', 'lian'],
@@ -41,9 +45,9 @@ const xinTaiMorePageConfig = {
       }
     ]
   }
-};
+}
 
-const xinTaiMoreDetailPageConfig = {
+const xinTaiMoreDetailPageConfig: IXinTaiMoreDetailPageConfig = {
   1: {
     shop: {
       imgs: {
@@ -129,6 +133,6 @@ const xinTaiMoreDetailPageConfig = {
       ]
     }
   }
-};
+}
 
-export { xinTaiMorePageConfig, xinTaiMoreDetailPageConfig };
+export { xinTaiMorePageConfig, xinTaiMoreDetailPageConfig }

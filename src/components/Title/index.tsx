@@ -1,13 +1,19 @@
-import React, { PureComponent } from 'react';
-import styles from './title.scss';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react'
+import styles from './title.scss'
 
-export default class Title extends PureComponent {
+interface IProps {
+  style?: any
+  config: {
+    pinyin: string[]
+    hanzi: string[]
+  }
+}
+export default class Title extends PureComponent<IProps, {}> {
   render() {
     const {
       config: { pinyin, hanzi },
       style
-    } = this.props;
+    } = this.props
     return (
       <div className={styles.layout}>
         <div className={styles.text} style={style}>
@@ -24,11 +30,6 @@ export default class Title extends PureComponent {
           {hanzi.map((item, index) => <span key={index}>{item}</span>)}
         </div>
       </div>
-    );
+    )
   }
 }
-
-Title.propTypes = {
-  config: PropTypes.object,
-  style: PropTypes.object
-};

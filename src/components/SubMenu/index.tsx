@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import styles from './subMenu.scss'
-import { NavLink, RouteComponentProps } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import BackMenu from './back.js'
 
 interface IProps {

@@ -13,7 +13,9 @@ const titleConfig = {
   hanzi: ['艺', '术', '合', '作']
 }
 
-const designer = [
+type IItem = { img: string; name: string }
+
+const designer: IItem[] = [
   {
     img: Images.girl,
     name: '设计师 阿茶'
@@ -36,7 +38,7 @@ const designer = [
   }
 ]
 export default class YiJinPage extends PureComponent {
-  renderListItem(item, index) {
+  renderListItem(item: IItem, index: number) {
     return (
       <div key={index} className={styles.itemLayout}>
         <img src={item.img} alt="" />

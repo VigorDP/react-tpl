@@ -2,17 +2,19 @@ import React, { PureComponent } from 'react'
 import styles from 'styles/main/XinTaiMorePage.scss'
 import SubMenu from 'components/SubMenu'
 import NavButton from 'components/NavButton'
+import { RouteComponentProps } from 'react-router-dom'
 import { xinTaiMorePageConfig as content } from 'utils/content'
 import Title from 'components/Title'
 import Seal from 'components/Seal'
 import Paragraph from 'components/Paragraph'
-
-export default class XinTaiMorePage extends PureComponent {
-  constructor(props) {
+import { IXinTaiMorePageBase } from 'schemas/content'
+interface IProps extends RouteComponentProps<{ id: string }> {}
+export default class XinTaiMorePage extends PureComponent<IProps, any> {
+  constructor(props: IProps) {
     super(props)
     this.config = content[props.match.params.id]
   }
-  config: any
+  config: IXinTaiMorePageBase
   render() {
     return (
       <div className={styles.mainLayout}>

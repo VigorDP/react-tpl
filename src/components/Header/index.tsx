@@ -1,11 +1,27 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import styles from './header.scss';
+import React, { Component } from 'react'
+import { NavLink, RouteComponentProps } from 'react-router-dom'
+import styles from './header.scss'
 
-export default class Header extends Component {
+type ICenterMenu = {
+  text: string
+  path: string
+}
+
+type IRightMenu = {
+  url: string
+  path: string
+}
+
+interface IProps extends RouteComponentProps {
+  logo: string
+  centerMenu: ICenterMenu[]
+  rightMenu: IRightMenu[]
+  style?: any
+}
+
+export default class Header extends Component<Partial<IProps>, {}> {
   render() {
-    const { logo, centerMenu = [], rightMenu = [] } = this.props;
+    const { logo, centerMenu = [], rightMenu = [] } = this.props
     return (
       <div className={styles.headerContainer}>
         <div className={styles.logoContainer}>
@@ -29,12 +45,6 @@ export default class Header extends Component {
           ))}
         </div>
       </div>
-    );
+    )
   }
 }
-
-Header.propTypes = {
-  logo: PropTypes.string,
-  centerMenu: PropTypes.array,
-  rightMenu: PropTypes.array
-};

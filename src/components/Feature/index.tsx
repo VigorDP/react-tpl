@@ -1,17 +1,21 @@
-import React, { PureComponent } from 'react';
-import styles from './feature.scss';
-import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import React, { PureComponent } from 'react'
+import styles from './feature.scss'
+import { NavLink, RouteComponentProps } from 'react-router-dom'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
-export default class Feature extends PureComponent {
+interface IProps extends RouteComponentProps {
+  config: { tag: string[]; img: string; description: string; path: string }[]
+  style: any
+}
+
+export default class Feature extends PureComponent<Partial<IProps>, {}> {
   render() {
-    const { config, style } = this.props;
+    const { config, style } = this.props
     return (
       <div className={styles.layout} style={style}>
         <Tabs className={styles.tabLayout}>
           <TabList className={styles.tabList}>
-            {config.map((item, index) => (
+            {config!.map((item, index) => (
               <Tab
                 key={index}
                 className={styles.tab}
@@ -23,7 +27,7 @@ export default class Feature extends PureComponent {
             ))}
           </TabList>
 
-          {config.map((item, index) => (
+          {config!.map((item, index) => (
             <TabPanel
               className={styles.tabPanel}
               selectedClassName={styles.panelActive}
@@ -48,11 +52,6 @@ export default class Feature extends PureComponent {
           ))}
         </Tabs>
       </div>
-    );
+    )
   }
 }
-
-Feature.propTypes = {
-  config: PropTypes.array,
-  style: PropTypes.object
-};

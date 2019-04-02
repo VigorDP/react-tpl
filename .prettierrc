@@ -11,6 +11,5 @@
   "rangeStart": 0,
   "requirePragma": false,
   "insertPragma": false,
-  "proseWrap": "preserve",
-  "parser": "typescript"
+  "proseWrap": "preserve"
 }

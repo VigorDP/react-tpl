@@ -1,6 +1,9 @@
-const routeMap = {
-  default: '/',
+type IRouteMap = {
+  [index: string]: string
+}
 
+const routeMap: IRouteMap = {
+  default: '/',
   main: '/main',
   main_yijin: '/main/yiJin',
   main_xintai: '/main/xinTai',

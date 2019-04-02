@@ -7,16 +7,15 @@ import Title from 'components/Title'
 import Seal from 'components/Seal'
 import Paragraph from 'components/Paragraph'
 import { RouteComponentProps } from 'react-router-dom'
-
-interface IProps extends RouteComponentProps {}
+import { IXinTaiMoreDetailPageBase } from 'schemas/content'
+interface IProps extends RouteComponentProps<{ id: string }> {}
 
 export default class XinTaiMoreDetailPage extends PureComponent<IProps, {}> {
   constructor(props: IProps) {
     super(props)
     this.config = content[props.match.params.id]
-    console.log(this.config)
   }
-  config: any
+  config: IXinTaiMoreDetailPageBase
 
   render() {
     return (

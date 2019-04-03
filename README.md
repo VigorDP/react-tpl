@@ -16,6 +16,7 @@ npm run build
 
 # 技术栈
 
+- typescript
 - react v16
 - redux
 - react-router v4

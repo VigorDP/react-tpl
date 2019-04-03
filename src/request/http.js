@@ -50,7 +50,9 @@ axios.interceptors.response.use(
         case 401:
           router.replace({
             path: '/login',
-            query: { redirect: router.currentRoute.fullPath }
+            query: {
+              redirect: router.currentRoute.fullPath
+            }
           })
           break
         // 403 token过期

@@ -20,4 +20,8 @@ function getProxyPath(env) {
   return proxyPath
 }
 
-export { HOST, ENV, PROXYPATH }
+module.exports = {
+  HOST,
+  ENV,
+  PROXYPATH
+}

@@ -10,13 +10,13 @@ module.exports = {
     app: config.entry
   },
   output: {
-    filename: 'js/[name].[contenthash:8].js',
+    filename: 'js/[name].[hash:8].js',
     path: config.path, // 必须是绝对路径
     publicPath:
       process.env.NODE_ENV === 'development'
         ? config.dev.publicPath
         : config.prod.publicPath, // 打包后静态资源根路径
-    chunkFilename: '[id].js' // 代码分割的块（chunk）的名字
+    chunkFilename: 'js/[name].[chunkhash:8].js' // 代码分割的块（chunk）的名字
   },
   module: {
     rules: [
@@ -62,7 +62,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
+            'css-loader?minimize=true&modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
             'sass-loader'
           ]
         }),
@@ -127,10 +127,34 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // 定义客户端代码中的全局变量
     }),
-    new ExtractTextPlugin('css/[name].[contenthash:8].css'),
+    new ExtractTextPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      allChunks: true
+    }),
     new HtmlWebpackPlugin({
       template: config.template,
-      filename: config.filename
+      filename: config.filename,
+      chunksSortMode: 'dependency'
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        // 其次: 打包业务中公共代码(通过priority属性确定打包顺序)
+        common: {
+          name: 'business',
+          chunks: 'all',
+          minSize: 2,
+          priority: 0
+        },
+        // 首先: 打包node_modules中的文件
+        vendor: {
+          name: 'framework',
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          priority: 10
+        }
+      }
+    }
+  }
 }

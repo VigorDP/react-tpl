@@ -131,8 +131,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: config.template,
-      filename: config.filename,
-      chunksSortMode: 'dependency'
+      filename: config.filename
     })
   ],
   optimization: {
@@ -146,7 +145,7 @@ module.exports = {
         common: {
           name: 'business',
           chunks: 'all',
-          minSize: 1,
+          minSize: 2,
           priority: 0
         },
         // 首先: 打包node_modules中的文件
@@ -155,6 +154,13 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           chunks: 'all',
           priority: 10
+        },
+        react: {
+          name: 'react',
+          test: /react[\\/]|redux|react-dom|react-router|react-tabs|react-swipeable-views/,
+          chunks: 'initial',
+          minChunks: 1,
+          priority: 100
         }
       }
     }

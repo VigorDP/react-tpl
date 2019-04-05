@@ -1,9 +1,7 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const webpack = require('webpack')
-const HOST = require('../src/request/env').HOST
-const env = require('../src/request/env').ENV
-const proxyPath = require('../src/request/env').PROXYPATH
+const config = require('./config')
 
 module.exports = merge(baseWebpackConfig, {
   // cheap-module-eval-source-map is faster for development
@@ -12,14 +10,7 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     hot: true,
-    proxy: {
-      [proxyPath]: {
-        target: HOST[env],
-        changeOrigin: true,
-        pathRewrite: {
-          [proxyPath]: '/'
-        }
-      }
-    }
+    port: config.dev.port,
+    proxy: config.dev.proxyTable
   }
 })

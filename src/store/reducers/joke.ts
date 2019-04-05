@@ -1,20 +1,24 @@
 import { LOAD_JOKE } from '../actionType'
-import { Record, List } from 'immutable'
 import { handleActions } from 'redux-actions'
+
 // 语法：handleActions({actionCreator},initialState)
-const JokeRecord = Record({
+const defaultJoke = {
   content: '1',
   hashId: '',
   unixtime: 1,
   updatetime: '2018-12-12 20:23:52'
-})
-const defaultJoke = new JokeRecord()
+}
+type IJoke = typeof defaultJoke[]
 
-export default handleActions(
+interface IAction {
+  payload: any
+}
+
+export default handleActions<IJoke, IAction>(
   {
-    [LOAD_JOKE](state, action) {
+    [LOAD_JOKE](state: IJoke, action: IAction) {
       return state.concat(action.payload)
     }
   },
-  List([defaultJoke])
+  [defaultJoke]
 )

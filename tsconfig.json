@@ -6,7 +6,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "strict": true,
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "sourceMap": true,
     "importHelpers": true,

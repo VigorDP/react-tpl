@@ -60,32 +60,25 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../' // css中的img资源默认和.css文件同级，但是图片打在imgs(和css文件夹同级)中,故需要回一级
+            }
+          },
           'css-loader?minimize=true&modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
           'sass-loader'
         ],
         include: [resolve('src')]
       },
       {
-        test: /\.(png|jpg|gif|eot|svg|otf|ttf|woff|woff2)$/,
+        test: /\.(png|jpg|gif|ico|eot|svg|otf|ttf|woff|woff2)$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              limit: 8192,
+              limit: 8192, // 小于该值，会打出 base64 图片，大于该值使用file-loader
               name: 'imgs/[name].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(ico)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'imgs/[name].[ext]',
-              context: ''
             }
           }
         ]

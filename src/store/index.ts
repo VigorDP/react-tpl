@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import promiseMiddleware from 'redux-promise'
 import rootReducer from 'store/reducers'
-import Immutable from 'immutable'
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnhancers =
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const initialState = Immutable.Map()
+const initialState = Object.create(null)
 
 let store = createStore(
   rootReducer,

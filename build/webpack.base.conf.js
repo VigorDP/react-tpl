@@ -141,27 +141,22 @@ module.exports = {
     },
     splitChunks: {
       cacheGroups: {
-        // 其次: 打包业务中公共代码(通过priority属性确定打包顺序)
-        common: {
-          name: 'business',
-          chunks: 'all',
-          minSize: 2,
-          priority: 0
-        },
-        // 首先: 打包node_modules中的文件
-        vendor: {
-          name: 'framework',
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'all',
-          priority: 10
-        },
+        // 首先: 分离 react 相关库文件(通过priority属性确定打包顺序)
         react: {
           name: 'react',
           test: /react[\\/]|redux|react-dom|react-router|react-tabs|react-swipeable-views/,
           chunks: 'initial',
           minChunks: 1,
           priority: 100
+        },
+        // 其次: 打包node_modules中除了react相关库以外的库
+        framework: {
+          name: 'framework',
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          priority: 10
         }
+        // 最后：其他业务代码自动打到 output.filename 指定的文件
       }
     }
   }

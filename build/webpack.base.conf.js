@@ -137,6 +137,9 @@ module.exports = {
   ],
   optimization: {
     concatenateModules: false,
+    runtimeChunk: {
+      name: 'manifest'
+    },
     splitChunks: {
       cacheGroups: {
         // 其次: 打包业务中公共代码(通过priority属性确定打包顺序)

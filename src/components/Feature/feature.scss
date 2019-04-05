@@ -4,12 +4,15 @@
   width: 1100px;
   height: 610px;
   margin: 0 auto;
+
   .tabLayout {
     @include flexy;
     @include flex-sb;
+
     .tabList {
       @include flex-sb;
       margin: 44px 0 88px;
+
       .tab {
         @include flex-sa;
         width: 46px;
@@ -17,60 +20,69 @@
         margin-right: 24px;
         font-size: 18px;
         writing-mode: vertical-rl;
-        background: url(../../assets/imgs/rectangle@2x.png) no-repeat
-          center/cover;
+        background: url(../../assets/imgs/rectangle@2x.png) no-repeat center/cover;
+
         .top {
           color: $activeBg;
           font-family: fanti;
         }
+
         .bottom {
           letter-spacing: 1px;
           font-size: 16px;
         }
+
         &.tabActive {
-          background: url(../../assets/imgs/rectangle_active@2x.png) no-repeat
-            center/cover;
+          background: url(../../assets/imgs/rectangle_active@2x.png) no-repeat center/cover;
+
           .top,
           .bottom {
             color: white;
           }
         }
+
         &:hover {
           cursor: pointer;
         }
       }
     }
+
     .tabPanel {
       width: 1100px;
       background-color: red;
-      background: url(../../assets/imgs/rectangle_outer@2x.png) no-repeat
-        center/contain;
+      background: url(../../assets/imgs/rectangle_outer@2x.png) no-repeat center/contain;
       @include flex-sb;
       padding: 0 50px;
+
       &.panelActive {
         height: 424px;
       }
+
       .left {
         @include flexy;
         @include flex-center;
         // margin-top: -100px;
         max-width: 68px;
+
         .title {
           @include wh(68, 68);
           @include flex-center;
           font-size: 30px;
           color: $activeBg;
           background: url(../../assets/imgs/flower.png) no-repeat center/contain;
+
           &:nth-child(1) {
             margin-bottom: -15px;
           }
         }
+
         .divider {
           width: 70%;
           margin: 40px auto;
           height: 2px;
           background-color: $activeBg;
         }
+
         .sub {
           font-family: fanti;
           font-size: 30px;
@@ -79,17 +91,21 @@
           letter-spacing: 2px;
         }
       }
+
       .middle {
         @include wh(250, 300);
       }
+
       .right {
         @include wh(476, 260);
         line-height: 2;
         font-size: FangSong;
+
         p {
           text-indent: 2em;
           margin-bottom: 30px;
         }
+
         a {
           display: inline-block;
           float: right;

@@ -7,7 +7,7 @@ module.exports = {
   filename: 'index.html',
   prod: {
     assetDir: 'static',
-    publicPath: '/' // 指定存放 JavaScript 文件的 CDN 目录 URL
+    publicPath: './' // 指定存放 JavaScript 文件的 CDN 目录 URL
   },
   dev: {
     port: 8080,

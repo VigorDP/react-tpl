@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 
 const resolve = require('path').resolve
@@ -59,13 +59,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader?minimize=true&modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
-            'sass-loader'
-          ]
-        }),
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader?minimize=true&modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
+          'sass-loader'
+        ],
         include: [resolve('src')]
       },
       {
@@ -127,9 +125,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) // 定义客户端代码中的全局变量
     }),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
-      allChunks: true
+      chunkFilename: 'css/[name].[chunkhash:8].css'
     }),
     new HtmlWebpackPlugin({
       template: config.template,
@@ -138,13 +136,14 @@ module.exports = {
     })
   ],
   optimization: {
+    concatenateModules: false,
     splitChunks: {
       cacheGroups: {
         // 其次: 打包业务中公共代码(通过priority属性确定打包顺序)
         common: {
           name: 'business',
           chunks: 'all',
-          minSize: 2,
+          minSize: 1,
           priority: 0
         },
         // 首先: 打包node_modules中的文件

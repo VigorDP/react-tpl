@@ -13,7 +13,17 @@
     "downlevelIteration": true,
     "lib": ["es2015", "dom"],
     "jsx": "react",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@containers/*": ["./containers/*"],
+      "@assets/*": ["./assets/*"],
+      "@interfaces/*": ["./interfaces/*"],
+      "@styles/*": ["./styles/*"],
+      "@store/*": ["./store/*"],
+      "@services/*": ["./services/*"],
+      "@utils/*": ["./utils/*"]
+    }
   },
   "include": ["./src/**/*"]
 }

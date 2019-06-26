@@ -12,10 +12,7 @@ module.exports = {
   output: {
     filename: 'js/[name].[hash:8].js',
     path: config.path, // 必须是绝对路径
-    publicPath:
-      process.env.NODE_ENV === 'development'
-        ? config.dev.publicPath
-        : config.prod.publicPath, // 打包后静态资源根路径
+    publicPath: process.env.NODE_ENV === 'development' ? config.dev.publicPath : config.prod.publicPath, // 打包后静态资源根路径
     chunkFilename: 'js/[name].[chunkhash:8].js' // 代码分割的块（chunk）的名字
   },
   module: {
@@ -86,16 +83,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [
-      '.ts',
-      '.tsx',
-      '.js',
-      '.jsx',
-      '.json',
-      '.scss',
-      '.less',
-      '.css'
-    ], // 该扩展名类型文件在引入时可省略扩展名
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.scss', '.less', '.css'], // 该扩展名类型文件在引入时可省略扩展名
     modules: [
       // 告诉 webpack 解析模块时应该搜索的目录
       resolve('src'), // 实际返回了src的路径，会优先于node_modules搜索
@@ -106,7 +94,7 @@ module.exports = {
       src: resolve('src'),
       store: resolve('src/store'),
       assets: resolve('src/assets'),
-      api: resolve('src/request/api'),
+      services: resolve('src/request/api'),
       components: resolve('src/components'),
       containers: resolve('src/containers'),
       pages: resolve('src/containers/pages'),

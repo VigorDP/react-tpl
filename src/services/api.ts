@@ -1,11 +1,6 @@
 import { get } from './http'
 
-const loadJokeList = ({
-  sort = 'asc',
-  page = 1,
-  pagesize = 10,
-  time = '1418816972'
-} = {}) =>
+const loadJokeList = ({ sort = 'asc', page = 1, pagesize = 10, time = '1418816972' } = {}) =>
   get('joke/content/list.php', {
     sort,
     page,

@@ -10,9 +10,9 @@ import HouseLayout from './layouts/HouseLayout'
 import ServiceLayout from './layouts/ServiceLayout'
 import WeLayout from './layouts/WeLayout'
 
-import styles from 'styles/index.scss'
-import Images from 'utils/image'
-import P from 'utils/routePath'
+import styles from '@styles/index.scss'
+import Images from '@utils/image'
+import P from '@utils/routePath'
 
 const centerMenu = [
   { text: '明式家具之美', path: P.main },
@@ -83,11 +83,7 @@ export default class App extends Component {
     return (
       <div className={styles.App}>
         <header className={styles.header}>
-          <Header
-            logo={Images.logo}
-            centerMenu={centerMenu}
-            rightMenu={rightMenu}
-          />
+          <Header logo={Images.logo} centerMenu={centerMenu} rightMenu={rightMenu} />
         </header>
 
         <main className={styles.main}>

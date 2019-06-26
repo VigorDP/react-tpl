@@ -7,7 +7,7 @@ import Title from 'components/Title'
 import Seal from 'components/Seal'
 import Paragraph from 'components/Paragraph'
 import { RouteComponentProps } from 'react-router-dom'
-import { IXinTaiMoreDetailPageBase } from 'schemas/content'
+import { IXinTaiMoreDetailPageBase } from '@interfaces/content'
 interface IProps extends RouteComponentProps<{ id: string }> {}
 
 export default class XinTaiMoreDetailPage extends PureComponent<IProps, {}> {

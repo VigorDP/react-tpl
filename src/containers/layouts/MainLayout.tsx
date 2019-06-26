@@ -20,12 +20,7 @@ const menuConfig = [
 export default class Home extends PureComponent {
   get canShowSubMenu() {
     const { pathname } = (this.props as RouteComponentProps).history.location
-    const showSubMenuPathArray = [
-      P.main_yijin,
-      P.main_xintai,
-      P.main_gongyi,
-      P.main_caizhi
-    ]
+    const showSubMenuPathArray = [P.main_yijin, P.main_xintai, P.main_gongyi, P.main_caizhi]
     if (showSubMenuPathArray.includes(pathname)) {
       return true
     }
@@ -34,19 +29,13 @@ export default class Home extends PureComponent {
   render() {
     return (
       <div>
-        {this.canShowSubMenu && (
-          <SubMenu config={menuConfig} style={{ paddingLeft: 200 }} />
-        )}
+        {this.canShowSubMenu && <SubMenu config={menuConfig} style={{ paddingLeft: 200 }} />}
         <main>
           <Switch>
             <Route path={P.main_yijin} component={YiJinPage} />
             <Route path={P.main_xintai} component={XinTaiPage} exact />
             <Route path={P.main_xintai_more} component={XinTaiMorePage} exact />
-            <Route
-              path={P.main_xintai_more_detail}
-              component={XinTaiMoreDetailPage}
-              exact
-            />
+            <Route path={P.main_xintai_more_detail} component={XinTaiMoreDetailPage} exact />
             <Route path={P.main_gongyi} component={GongYiPage} />
             <Route path={P.main_caizhi} component={CaiZhiPage} />
             <Redirect to={P.main_yijin} />
